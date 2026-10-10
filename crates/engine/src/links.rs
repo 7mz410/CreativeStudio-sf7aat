@@ -26,7 +26,7 @@ pub const LINKS: &[Link] = &[
     Link { command: "help.discord", label: "Upstream Community on Discord", url: DISCORD, icon: "messages-square" },
     Link { command: "help.app_page", label: "ShibShib Website", url: APP_PAGE, icon: "globe" },
     Link { command: "help.github", label: "ShibShib sf7aat on GitHub", url: GITHUB, icon: "code-xml" },
-    Link { command: "help.website", label: "ArtCraft website", url: WEBSITE, icon: "external-link" },
+    Link { command: "help.website", label: "ShibShib Project", url: WEBSITE, icon: "external-link" },
 ];
 
 pub fn for_command(id: &str) -> Option<&'static Link> {

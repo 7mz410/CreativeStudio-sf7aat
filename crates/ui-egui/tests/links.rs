@@ -30,9 +30,9 @@ fn discord_button_in_the_top_bar_opens_discord() {
 fn home_screen_links() {
     for (label, url) in [
         ("Join our Discord", links::DISCORD),
-        ("ShibShib Website", "https://getartcraft.com/apps/pdfcraft"),
-        ("ShibShib sf7aat on GitHub", "https://github.com/storytold/pdfcraft"),
-        ("ArtCraft website", "https://getartcraft.com"),
+        ("ShibShib Website", "https://shibshib.art"),
+        ("ShibShib sf7aat on GitHub", "https://github.com/7mz410/ShibShib-sf7aat"),
+        ("ShibShib Project", "https://shibshib.art"),
     ] {
         let mut h = harness(|_| {});
         h.get_by_label("The upstream ArtCraft community");

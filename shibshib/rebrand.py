@@ -20,6 +20,9 @@ KEEP = ('the PdfCraft authors',)
 
 # Exact replacements, applied before the general rename (and kept idempotent: skipped once done).
 RTL_RULES = [
+    ('crates/ui-egui/tests/links.rs', '("ShibShib Website", "https://getartcraft.com/apps/pdfcraft")', '("ShibShib Website", "https://shibshib.art")'),
+    ('crates/ui-egui/tests/links.rs', '("ShibShib sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("ShibShib sf7aat on GitHub", "https://github.com/7mz410/ShibShib-sf7aat")'),
+    ('crates/ui-egui/tests/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://shibshib.art")'),
     ('crates/engine/src/links.rs', '        assert_eq!(super::APP_PAGE, format!("{}/apps/{}", super::WEBSITE, super::APP));\n        assert_eq!(super::GITHUB, format!("https://github.com/storytold/{}", super::APP));', '        assert_eq!(super::APP_PAGE, "https://shibshib.art");\n        assert_eq!(super::GITHUB, "https://github.com/7mz410/ShibShib-sf7aat");'),
     # Links, the update check and upstream's ArtCraft wordmark/mark (docs/brand/, removed).
     ('crates/engine/src/links.rs', 'pub const WEBSITE: &str = "https://getartcraft.com";', 'pub const WEBSITE: &str = "https://shibshib.art";'),
@@ -38,6 +41,7 @@ SPECIFIC = {
 LITERALS = [
     ('PdfCraft web page', 'ShibShib Website'),
     ('ArtCraft Website', 'ShibShib Project'),
+    ('ArtCraft website', 'ShibShib Project'),
     ('Join the ArtCraft Discord', 'Upstream Community on Discord'),
     ('Join the ArtCraft community', 'The upstream ArtCraft community'),
 ]

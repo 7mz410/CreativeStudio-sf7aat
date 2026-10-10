@@ -342,7 +342,7 @@ pub const COMMANDS: &[CommandSpec] = &[
     c("help.discord", "Upstream Community on Discord", HELP, None, Nothing, "messages-square"),
     c("help.app_page", "ShibShib Website", HELP, None, Nothing, "globe"),
     c("help.github", "ShibShib sf7aat on GitHub", HELP, None, Nothing, "code-xml"),
-    c("help.website", "ArtCraft website", HELP, None, Nothing, "external-link"),
+    c("help.website", "ShibShib Project", HELP, None, Nothing, "external-link"),
     c("help.check_updates", "Check for updates…", HELP, None, Nothing, "cloud"),
     c("help.about", "About ShibShib sf7aat", HELP, None, Nothing, "info"),
 ];
