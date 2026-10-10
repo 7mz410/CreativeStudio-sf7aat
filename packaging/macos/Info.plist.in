@@ -7,13 +7,13 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleDisplayName</key>
-  <string>PdfCraft</string>
+  <string>ShibShib sf7aat</string>
   <key>CFBundleName</key>
-  <string>PdfCraft</string>
+  <string>ShibShib sf7aat</string>
   <key>CFBundleExecutable</key>
   <string>PdfCraft</string>
   <key>CFBundleIdentifier</key>
-  <string>ai.storyteller.pdfcraft</string>
+  <string>com.shibshib.sf7aat</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundlePackageType</key>
