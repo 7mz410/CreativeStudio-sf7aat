@@ -20,6 +20,40 @@ KEEP = ('the PdfCraft authors',)
 
 # Exact replacements, applied before the general rename (and kept idempotent: skipped once done).
 RTL_RULES = [
+    ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.left() > 0.0''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.left() > 0.0'''),
+    ('crates/ui-egui/tests/ui.rs', 'open.right() <= h.get_by_label("Discord").rect().left());', 'open.right() <= h.get_by_label("Keyboard shortcuts").rect().left());'),
+    ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.right() <= discord.left()''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.right() <= discord.left()'''),
+    ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();
+    assert!(open.right() <= discord.left(), "Open {open:?} must not run under Discord {discord:?}");''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();
+    assert!(open.right() <= discord.left(), "Open {open:?} must not run under the top-bar buttons {discord:?}");'''),
+    ('crates/ui-egui/tests/links.rs', """fn discord_button_in_the_top_bar_opens_discord() {
+    let mut h = harness(|_| {});
+    h.get_by_label("Discord").click();
+    h.run_steps(2);
+    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
+""", """fn no_discord_button() {
+    let h = harness(|_| {});
+    assert!(h.query_by_label("Discord").is_none());
+    assert!(h.query_by_label("Join our Discord").is_none());
+"""),
+    ('crates/ui-egui/tests/links.rs', '        ("Join our Discord", links::DISCORD),\n', ''),
+    ('crates/ui-egui/tests/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("ShibShib");'),
+    ('crates/ui-egui/tests/links.rs', """    h.get_by_label("Join our Discord").click();
+    h.run_steps(2);
+    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
+}""", """    h.get_by_label("ShibShib Website").click();
+    h.run_steps(2);
+    assert_eq!(h.state().last_opened_url.as_deref(), Some("https://shibshib.art"));
+}"""),
+    # No Discord (the upstream community): the community links start after it.
+    ('crates/ui-egui/src/widgets.rs', '            let resp = if i == 0 { icon_pill(ui, l.icon, tl!("Join our Discord"), true) } else { icon_pill(ui, l.icon, tl!(l.label), false) };', '            if i == 0 {\n                continue;\n            }\n            let resp = icon_pill(ui, l.icon, tl!(l.label), i == 1);'),
+    ('crates/ui-egui/src/chrome.rs', """                    // One click to the community, from anywhere in the app.
+                    if widgets::ghost_button(ui, "messages-square", "Discord").on_hover_text(pdfcraft_engine::links::DISCORD).clicked() {
+                        app.execute("help.discord");
+                    }
+""", ''),
+    ('crates/ui-egui/src/home.rs', 'tl!("The upstream ArtCraft community")', '"ShibShib"'),
+    ('crates/ui-egui/src/home.rs', '                            ui.label(egui::RichText::new(tl!("Get help, share feedback and follow development on Discord.")).color(t.text_muted));\n', ''),
     ('crates/ui-egui/tests/links.rs', '("ShibShib Website", "https://getartcraft.com/apps/pdfcraft")', '("ShibShib Website", "https://shibshib.art")'),
     ('crates/ui-egui/tests/links.rs', '("ShibShib sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("ShibShib sf7aat on GitHub", "https://github.com/7mz410/ShibShib-sf7aat")'),
     ('crates/ui-egui/tests/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://shibshib.art")'),
