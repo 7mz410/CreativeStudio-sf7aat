@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Apply the ShibShib sf7aat branding on top of upstream PdfCraft.
+"""Apply the sf7aat branding on top of upstream PdfCraft.
 
 Only user-visible text is rebranded; crate names, file formats and other internals keep their
 upstream names so `git merge upstream/main` stays easy. The script is idempotent: after merging
 upstream, resolve any conflicts in favour of upstream and run it again.
 
-    python3 shibshib/rebrand.py
+    python3 studio/rebrand.py
 """
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-NAME = 'ShibShib sf7aat'
-REPO = 'https://github.com/7mz410/ShibShib-sf7aat'
-SITE = 'https://shibshib.art'
+NAME = 'sf7aat'
+REPO = 'https://github.com/7mz410/CreativeStudio-sf7aat'
+SITE = 'https://studio.creative.ps'
 # Persisted names that saved catalogs and presets refer to; renaming them would break those.
 KEEP = ('the PdfCraft authors',)
 
@@ -37,13 +37,13 @@ RTL_RULES = [
     assert!(h.query_by_label("Join our Discord").is_none());
 """),
     ('crates/ui-egui/tests/links.rs', '        ("Join our Discord", links::DISCORD),\n', ''),
-    ('crates/ui-egui/tests/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("ShibShib");'),
+    ('crates/ui-egui/tests/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("Creative Studio");'),
     ('crates/ui-egui/tests/links.rs', """    h.get_by_label("Join our Discord").click();
     h.run_steps(2);
     assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
-}""", """    h.get_by_label("ShibShib Website").click();
+}""", """    h.get_by_label("Creative Studio Website").click();
     h.run_steps(2);
-    assert_eq!(h.state().last_opened_url.as_deref(), Some("https://shibshib.art"));
+    assert_eq!(h.state().last_opened_url.as_deref(), Some("https://studio.creative.ps"));
 }"""),
     # No Discord (the upstream community): the community links start after it.
     ('crates/ui-egui/src/widgets.rs', '            let resp = if i == 0 { icon_pill(ui, l.icon, tl!("Join our Discord"), true) } else { icon_pill(ui, l.icon, tl!(l.label), false) };', '            if i == 0 {\n                continue;\n            }\n            let resp = icon_pill(ui, l.icon, tl!(l.label), i == 1);'),
@@ -52,30 +52,30 @@ RTL_RULES = [
                         app.execute("help.discord");
                     }
 """, ''),
-    ('crates/ui-egui/src/home.rs', 'tl!("The upstream ArtCraft community")', '"ShibShib"'),
+    ('crates/ui-egui/src/home.rs', 'tl!("The upstream ArtCraft community")', '"Creative Studio"'),
     ('crates/ui-egui/src/home.rs', '                            ui.label(egui::RichText::new(tl!("Get help, share feedback and follow development on Discord.")).color(t.text_muted));\n', ''),
-    ('crates/ui-egui/tests/links.rs', '("ShibShib Website", "https://getartcraft.com/apps/pdfcraft")', '("ShibShib Website", "https://shibshib.art")'),
-    ('crates/ui-egui/tests/links.rs', '("ShibShib sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("ShibShib sf7aat on GitHub", "https://github.com/7mz410/ShibShib-sf7aat")'),
-    ('crates/ui-egui/tests/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://shibshib.art")'),
-    ('crates/engine/src/links.rs', '        assert_eq!(super::APP_PAGE, format!("{}/apps/{}", super::WEBSITE, super::APP));\n        assert_eq!(super::GITHUB, format!("https://github.com/storytold/{}", super::APP));', '        assert_eq!(super::APP_PAGE, "https://shibshib.art");\n        assert_eq!(super::GITHUB, "https://github.com/7mz410/ShibShib-sf7aat");'),
+    ('crates/ui-egui/tests/links.rs', '("Creative Studio Website", "https://getartcraft.com/apps/pdfcraft")', '("Creative Studio Website", "https://studio.creative.ps")'),
+    ('crates/ui-egui/tests/links.rs', '("sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("sf7aat on GitHub", "https://github.com/7mz410/CreativeStudio-sf7aat")'),
+    ('crates/ui-egui/tests/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://studio.creative.ps")'),
+    ('crates/engine/src/links.rs', '        assert_eq!(super::APP_PAGE, format!("{}/apps/{}", super::WEBSITE, super::APP));\n        assert_eq!(super::GITHUB, format!("https://github.com/storytold/{}", super::APP));', '        assert_eq!(super::APP_PAGE, "https://studio.creative.ps");\n        assert_eq!(super::GITHUB, "https://github.com/7mz410/CreativeStudio-sf7aat");'),
     # Links, the update check and upstream's ArtCraft wordmark/mark (docs/brand/, removed).
-    ('crates/engine/src/links.rs', 'pub const WEBSITE: &str = "https://getartcraft.com";', 'pub const WEBSITE: &str = "https://shibshib.art";'),
-    ('crates/engine/src/links.rs', 'pub const APP_PAGE: &str = "https://getartcraft.com/apps/pdfcraft";', 'pub const APP_PAGE: &str = "https://shibshib.art";'),
-    ('crates/engine/src/links.rs', 'pub const GITHUB: &str = "https://github.com/storytold/pdfcraft";', 'pub const GITHUB: &str = "https://github.com/7mz410/ShibShib-sf7aat";'),
-    ('crates/ui-egui/src/updates.rs', 'pub const RELEASES_PAGE: &str = "https://github.com/storytold/pdfcraft/releases";', 'pub const RELEASES_PAGE: &str = "https://github.com/7mz410/ShibShib-sf7aat/releases";'),
-    ('apps/pdfcraft/src/updates.rs', 'const LATEST: &str = "https://api.github.com/repos/storytold/pdfcraft/releases/latest";', 'const LATEST: &str = "https://api.github.com/repos/7mz410/ShibShib-sf7aat/releases/latest";'),
-    ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo-white.svg")', 'include_bytes!("../../../docs/shibshib/sf7aat-white.svg")'),
-    ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo.svg")', 'include_bytes!("../../../docs/shibshib/sf7aat.svg")'),
-    ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-mark.svg")', 'include_bytes!("../../../docs/shibshib/sf7aat-icon.svg")'),
+    ('crates/engine/src/links.rs', 'pub const WEBSITE: &str = "https://getartcraft.com";', 'pub const WEBSITE: &str = "https://studio.creative.ps";'),
+    ('crates/engine/src/links.rs', 'pub const APP_PAGE: &str = "https://getartcraft.com/apps/pdfcraft";', 'pub const APP_PAGE: &str = "https://studio.creative.ps";'),
+    ('crates/engine/src/links.rs', 'pub const GITHUB: &str = "https://github.com/storytold/pdfcraft";', 'pub const GITHUB: &str = "https://github.com/7mz410/CreativeStudio-sf7aat";'),
+    ('crates/ui-egui/src/updates.rs', 'pub const RELEASES_PAGE: &str = "https://github.com/storytold/pdfcraft/releases";', 'pub const RELEASES_PAGE: &str = "https://github.com/7mz410/CreativeStudio-sf7aat/releases";'),
+    ('apps/pdfcraft/src/updates.rs', 'const LATEST: &str = "https://api.github.com/repos/storytold/pdfcraft/releases/latest";', 'const LATEST: &str = "https://api.github.com/repos/7mz410/CreativeStudio-sf7aat/releases/latest";'),
+    ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo-white.svg")', 'include_bytes!("../../../docs/studio/sf7aat-white.svg")'),
+    ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo.svg")', 'include_bytes!("../../../docs/studio/sf7aat.svg")'),
+    ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-mark.svg")', 'include_bytes!("../../../docs/studio/sf7aat-icon.svg")'),
 ]
 
 SPECIFIC = {
 }
 # Exact replacements inside string literals and catalogs, before the general rename.
 LITERALS = [
-    ('PdfCraft web page', 'ShibShib Website'),
-    ('ArtCraft Website', 'ShibShib Project'),
-    ('ArtCraft website', 'ShibShib Project'),
+    ('PdfCraft web page', 'Creative Studio Website'),
+    ('ArtCraft Website', 'Creative Studio Project'),
+    ('ArtCraft website', 'Creative Studio Project'),
     ('Join the ArtCraft Discord', 'Upstream Community on Discord'),
     ('Join the ArtCraft community', 'The upstream ArtCraft community'),
 ]
@@ -143,7 +143,7 @@ def rebrand_locale(path: Path) -> bool:
 def rebrand_plist(path: Path) -> bool:
     src = path.read_text(encoding='utf-8')
     out = re.sub(r'(<key>CFBundle(?:Display)?Name</key>\s*<string>)PdfCraft(</string>)', rf'\g<1>{NAME}\2', src)
-    out = out.replace('<string>ai.storyteller.pdfcraft</string>', '<string>com.shibshib.sf7aat</string>')
+    out = out.replace('<string>ai.storyteller.pdfcraft</string>', '<string>ps.creative.studio.sf7aat</string>')
     if out != src:
         path.write_text(out, encoding='utf-8')
     return out != src

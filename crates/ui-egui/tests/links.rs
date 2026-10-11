@@ -28,12 +28,12 @@ fn no_discord_button() {
 #[test]
 fn home_screen_links() {
     for (label, url) in [
-        ("ShibShib Website", "https://shibshib.art"),
-        ("ShibShib sf7aat on GitHub", "https://github.com/7mz410/ShibShib-sf7aat"),
-        ("ShibShib Project", "https://shibshib.art"),
+        ("Creative Studio Website", "https://studio.creative.ps"),
+        ("sf7aat on GitHub", "https://github.com/7mz410/CreativeStudio-sf7aat"),
+        ("Creative Studio Project", "https://studio.creative.ps"),
     ] {
         let mut h = harness(|_| {});
-        h.get_by_label("ShibShib");
+        h.get_by_label("Creative Studio");
         h.get_by_label(label).click();
         h.run_steps(2);
         assert_eq!(h.state().last_opened_url.as_deref(), Some(url), "{label}");
@@ -49,9 +49,9 @@ fn about_dialog_shows_the_brand_and_links() {
         app.dialog = Some(Dialog::About);
     });
     assert!(h.query_all_by_label("ArtCraft").count() >= 2, "the mark and the wordmark (alt text)");
-    h.get_by_label("ShibShib Website").click();
+    h.get_by_label("Creative Studio Website").click();
     h.run_steps(2);
-    assert_eq!(h.state().last_opened_url.as_deref(), Some("https://shibshib.art"));
+    assert_eq!(h.state().last_opened_url.as_deref(), Some("https://studio.creative.ps"));
 }
 
 #[test]

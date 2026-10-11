@@ -7,13 +7,13 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleDisplayName</key>
-  <string>ShibShib sf7aat</string>
+  <string>sf7aat</string>
   <key>CFBundleName</key>
-  <string>ShibShib sf7aat</string>
+  <string>sf7aat</string>
   <key>CFBundleExecutable</key>
   <string>PdfCraft</string>
   <key>CFBundleIdentifier</key>
-  <string>com.shibshib.sf7aat</string>
+  <string>ps.creative.studio.sf7aat</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundlePackageType</key>

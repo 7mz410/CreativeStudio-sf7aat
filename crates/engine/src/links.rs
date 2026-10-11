@@ -7,9 +7,9 @@ use icu_properties::props::Script;
 pub const APP: &str = "pdfcraft";
 
 pub const DISCORD: &str = "https://discord.gg/artcraft";
-pub const WEBSITE: &str = "https://shibshib.art";
-pub const APP_PAGE: &str = "https://shibshib.art";
-pub const GITHUB: &str = "https://github.com/7mz410/ShibShib-sf7aat";
+pub const WEBSITE: &str = "https://studio.creative.ps";
+pub const APP_PAGE: &str = "https://studio.creative.ps";
+pub const GITHUB: &str = "https://github.com/7mz410/CreativeStudio-sf7aat";
 
 /// A link and the registry command that opens it.
 #[derive(Clone, Copy, Debug)]
@@ -24,9 +24,9 @@ pub struct Link {
 /// In the order they are shown. Discord comes first: it is where people get help fastest.
 pub const LINKS: &[Link] = &[
     Link { command: "help.discord", label: "Upstream Community on Discord", url: DISCORD, icon: "messages-square" },
-    Link { command: "help.app_page", label: "ShibShib Website", url: APP_PAGE, icon: "globe" },
-    Link { command: "help.github", label: "ShibShib sf7aat on GitHub", url: GITHUB, icon: "code-xml" },
-    Link { command: "help.website", label: "ShibShib Project", url: WEBSITE, icon: "external-link" },
+    Link { command: "help.app_page", label: "Creative Studio Website", url: APP_PAGE, icon: "globe" },
+    Link { command: "help.github", label: "sf7aat on GitHub", url: GITHUB, icon: "code-xml" },
+    Link { command: "help.website", label: "Creative Studio Project", url: WEBSITE, icon: "external-link" },
 ];
 
 pub fn for_command(id: &str) -> Option<&'static Link> {
@@ -341,8 +341,8 @@ fn mixes_scripts(label: &str) -> bool {
 mod tests {
     #[test]
     fn urls_follow_the_artcraft_scheme() {
-        assert_eq!(super::APP_PAGE, "https://shibshib.art");
-        assert_eq!(super::GITHUB, "https://github.com/7mz410/ShibShib-sf7aat");
+        assert_eq!(super::APP_PAGE, "https://studio.creative.ps");
+        assert_eq!(super::GITHUB, "https://github.com/7mz410/CreativeStudio-sf7aat");
         for l in super::LINKS {
             assert!(l.url.starts_with("https://"), "{}", l.url);
             assert!(crate::commands::command(l.command).is_some(), "{} is a registered command", l.command);
