@@ -19,7 +19,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Simplified Chinese UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "e6c6518c8a5073b99772bbc8f19fe94b8b1e804ec87e6781f152c8185382c2f3"
+sha256 = "f7c8152a34275750c7ca70fc7bae72206a0f7301b657f734fedd07a4b8066ce8"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/zh-hant.tsv"
@@ -30,7 +30,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Traditional Chinese UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "049eb899f371cbf9ae98b91ce776dd05daf8a1b74045cfb87d56902b25f561a3"
+sha256 = "dc85ab77977128e0c9f3880b7039ecad03e3befbc0929ee5da643a823e82929b"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/cs.tsv"
@@ -41,7 +41,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Czech UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "55ed48759fad1f8032b8443f11ffa010c56eea2cc96a1a2197b6e95715c20d64"
+sha256 = "b8d421bf249188e6424a6c1b98ab91417fedbfe37a23eaffe4e501337b6cf2ca"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/pt-br.tsv"
@@ -52,7 +52,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Brazilian Portuguese UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "6c75368a8a87987306729fd2cd13d579d934215fe5437debe8a70e3bfbe83df5"
+sha256 = "46e39de022bdd92c99be82487b8f1c3bae8f22b270c385bf3e30ad3da776ea01"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/es.tsv"
@@ -63,7 +63,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Spanish UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "c78f9f657ac2349d9cbd856eb75f7c027c6c81bd247e846353062dafc3adbace"
+sha256 = "9fd0c973d7bbd94f2d17318ac2efa0e237f52c80129dde8d08027d93bd872fc6"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/fr.tsv"
@@ -74,7 +74,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "French UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "7fd1f57ceeb6d4083bdc86ac00022c5804acfcea735ebd2c06bc934be1b63b1e"
+sha256 = "10ef8d011db20272e01b8e262c51c7917009fb7e0ba023d148c423b3556f1398"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/de.tsv"
@@ -85,7 +85,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "German UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "eefc5f39b551a4f160bacebf257678a9f597cb58e43da7d75d98afe7ca657768"
+sha256 = "1d4ea7561dd691d2a491cae106764fee85204559c852a4bcedc642ae42f9375f"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/te.tsv"
@@ -96,7 +96,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Telugu UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "ab626aa6d13bbc24081d857485fa25a3fa87ec9115ae41006016dd3a66398f43"
+sha256 = "a8e81794a2687d947be457d093581e6809d7384403b1e4402aa1c17ec4a9288b"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/it.tsv"
@@ -107,7 +107,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Italian UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "3e56edc407837f1c75d62ea83805b07d0e8923de7a726352ccfb85fa47d26786"
+sha256 = "6e7010d60f7bc2719c5dd0621712ef3d99b9fdc75e013696e4375b46424bfc79"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/ru.tsv"
@@ -118,7 +118,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Russian UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "8ed9c92bc0889c1b98f56cc3394e754afefa924c35b7f4a9e4835d65080e64e1"
+sha256 = "7959174bc27b156d45898314bc641f6ddfadf43e41820d35112c4cf83b84cfce"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/hu.tsv"
@@ -129,7 +129,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Hungarian UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "9b4b8ffa1857c5f0a9d06c3fffbbfc3891e57b5c310c5cf40dee4bae7732b103"
+sha256 = "1fdd75070edf546bc999ae8513fd100f961007f92a6b7bbff8b6fb359106b255"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/bg.tsv"
@@ -140,7 +140,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Bulgarian UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "7d2e2ac7ae5249fe734d0017b311e58306a552d689221c431e25bf8d106060b8"
+sha256 = "92d6b68c048c2022c2192915e2aeadce80c3c70ee2d7b83fb9697570c5f25245"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/ja.tsv"
@@ -151,7 +151,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Japanese UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "20f1384d7554bbd1ba908b0428fad74cd822fd5572217f84c3ccf43ccfc05b4c"
+sha256 = "3673f0c645b30f3faa92b62230bc16489a752b240988a80a651077704ada4905"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/uk.tsv"
@@ -162,7 +162,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Ukrainian UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "7eac5fec55dcb47608a5909055d98a739d7a0befbdbdf73cf39e1359a67234ed"
+sha256 = "118064cf04042a3d61b2cbdf908875bbfcea116b6a75c3f97332a361a4cf7d19"
 
 [[asset]]
 path = "crates/ui-egui/src/i18n/ar.tsv"
@@ -173,7 +173,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "translation"
 usage = "Arabic UI strings, compiled in by crates/ui-egui/src/i18n/mod.rs"
-sha256 = "f873f6c80548cfcde931098ec5cda53b94f47bb499aa481a3e8c39c8390ce1e8"
+sha256 = "60133522921816d8217d68bbc79ee2b50d76598c37c33ad598038dbc3864c340"
 
 [[asset]]
 path = "assets/icons/accessibility.svg"
@@ -2652,7 +2652,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Master artwork; every other app-icon file is rendered from it (packaging/icons.sh)"
-sha256 = "6eb67928bf17f1989303336a781f14d71b85e7cf761270dae2637c302d63953f"
+sha256 = "6033da97d2cdd01ede902e6d67242ebcc5ad6df40db17b1e8382a54332403d0b"
 
 [[asset]]
 path = "assets/app-icon/pdfcraft-small.svg"
@@ -2663,7 +2663,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "README header and assets/app-icon/README.md"
-sha256 = "6eb67928bf17f1989303336a781f14d71b85e7cf761270dae2637c302d63953f"
+sha256 = "6033da97d2cdd01ede902e6d67242ebcc5ad6df40db17b1e8382a54332403d0b"
 
 [[asset]]
 path = "assets/app-icon/pdfcraft-1024.png"
@@ -2674,7 +2674,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Runtime window/Dock icon on macOS (apps/pdfcraft/src/main.rs)"
-sha256 = "d105e01765b9c0cd450ed8b12e3bd0667460ef7c5ddd62d6d5564753d260b4e2"
+sha256 = "a9e9475193e33cc5e16665357b240b08dc2b837bd22f83327d2c5675c21c65ac"
 
 [[asset]]
 path = "assets/app-icon/pdfcraft.icns"
@@ -2685,7 +2685,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "macOS app bundle icon"
-sha256 = "561c4d523017a9b453a4261af408eab49d8d1b2a5da399d0ce59da27bcfa4279"
+sha256 = "ad67064bed5d0e878f037ab7942701990c87b2f77e5a0fc2152ffcdd8995b510"
 
 [[asset]]
 path = "assets/app-icon/pdfcraft.ico"
@@ -2696,7 +2696,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Embedded in pdfcraft.exe by apps/pdfcraft/build.rs (Explorer, taskbar, Start menu, Alt-Tab)"
-sha256 = "45238b7ee9225b639b9ca8a1ac183fdf4c2fdbf17329586fb155680de3878638"
+sha256 = "56553c5211f71efbafd2fdb55a02e205f452d829634573f9baa3b141dcd76c30"
 
 [[asset]]
 path = "assets/app-icon/hicolor/16x16/apps/ai.storyteller.pdfcraft.png"
@@ -2707,7 +2707,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "bb06d427bae24582c61c7ad7d12ed9152a617c2ace7689e30b3dca36f2f5dea1"
+sha256 = "23da304407392fc94f1dbcab342fba0526c7f121f79ad849e90de0eaa60883a4"
 
 [[asset]]
 path = "assets/app-icon/hicolor/24x24/apps/ai.storyteller.pdfcraft.png"
@@ -2718,7 +2718,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "2f72b875fcd3cb2272bf94d8470c63c7a2f227d5a9cbe0da99388385a5e47e0b"
+sha256 = "788067c2f4643a9e0cc885fc68ab6bf70eb1f21577ce6d69a563a601ac1eb95a"
 
 [[asset]]
 path = "assets/app-icon/hicolor/32x32/apps/ai.storyteller.pdfcraft.png"
@@ -2729,7 +2729,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "5cfdcfa95c35d6978f8c09ef89fcc4eb4fcedbc0b4b2b251a0cf4987e34ae4a0"
+sha256 = "6b5fe24785b7fe05ac1734262acd19945f217feb5fae1a753da0878d81f5e1b8"
 
 [[asset]]
 path = "assets/app-icon/hicolor/48x48/apps/ai.storyteller.pdfcraft.png"
@@ -2740,7 +2740,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "73abea39e5e07b41b94c382e236374200aa57b9ce781fccee1b12b8eb5740efb"
+sha256 = "255965fb58d442d47be34f1cba5668a1304b6b66233cda9c1e863c4b582879af"
 
 [[asset]]
 path = "assets/app-icon/hicolor/64x64/apps/ai.storyteller.pdfcraft.png"
@@ -2751,7 +2751,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "71d90c51e65b4cc64f4064fc47c09853ee2ecdbabe34ac03aabe2045321d4291"
+sha256 = "e25414179f2330c49a6900ec674cd62101feb21b1f3d66c4304133e2f7a7811c"
 
 [[asset]]
 path = "assets/app-icon/hicolor/128x128/apps/ai.storyteller.pdfcraft.png"
@@ -2762,7 +2762,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "d7f6aea5d085f6580c3a024a08f99829cf41fbab6e730533d6c6e8b4e1fd2179"
+sha256 = "50ed5cc97a4ea506d648f231429f387896825e8b0403cd1382c07fbf6a7d7187"
 
 [[asset]]
 path = "assets/app-icon/hicolor/256x256/apps/ai.storyteller.pdfcraft.png"
@@ -2773,7 +2773,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop); runtime window icon on Windows and Linux (apps/pdfcraft/src/main.rs)"
-sha256 = "b6e732e601b5f6f35da0ece40b0d40d859f170a232015b9a4a21e016e0e11070"
+sha256 = "b3efdd0ccc4987af7a3913f6276ed9daff5adb45c89dc54a8ddb3f33116fc4af"
 
 [[asset]]
 path = "assets/app-icon/hicolor/512x512/apps/ai.storyteller.pdfcraft.png"
@@ -2784,7 +2784,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "819d920e7c54e776a12e31159cc26da9c72185e253d9b741084924d1a92511dd"
+sha256 = "d979b220888dd4355c4236cb103a541b65c9c8cac2ba3fd1526c7d554785ca24"
 
 [[asset]]
 path = "assets/app-icon/hicolor/scalable/apps/ai.storyteller.pdfcraft.svg"
@@ -2795,7 +2795,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "assets/app-icon/LICENSE.txt"
 kind = "icon"
 usage = "Linux hicolor theme icon (packaging/linux/ai.storyteller.pdfcraft.desktop)"
-sha256 = "6eb67928bf17f1989303336a781f14d71b85e7cf761270dae2637c302d63953f"
+sha256 = "6033da97d2cdd01ede902e6d67242ebcc5ad6df40db17b1e8382a54332403d0b"
 
 [[asset]]
 path = "docs/images/pdfcraft-bookmarks.png"
@@ -3163,7 +3163,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "logo"
 usage = "Shown where upstream showed the ArtCraft wordmark and mark; the Creative Studio name and logo identify the Creative Studio project (NOTICE)"
-sha256 = "8affba09f3cf161f35441489ce7e7333f0abb400a76042dc6345ad26aaf8e23d"
+sha256 = "3ac743eb659eb4b6dcec322ff2909101a830fdd14d9cd3ad55e3d9f6d70c91b6"
 
 [[asset]]
 path = "docs/studio/sf7aat-white.svg"
@@ -3174,7 +3174,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "logo"
 usage = "Shown where upstream showed the ArtCraft wordmark and mark; the Creative Studio name and logo identify the Creative Studio project (NOTICE)"
-sha256 = "0bc68a3bd59356955918e844a9fbff296254e088425906a84a178b35cbf64dd7"
+sha256 = "3ac743eb659eb4b6dcec322ff2909101a830fdd14d9cd3ad55e3d9f6d70c91b6"
 
 [[asset]]
 path = "docs/studio/sf7aat-icon.svg"
@@ -3185,4 +3185,4 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "logo"
 usage = "Shown where upstream showed the ArtCraft wordmark and mark; the Creative Studio name and logo identify the Creative Studio project (NOTICE)"
-sha256 = "ef7e2a804c1d7bf4a8f1284e6ba505c6ad3707f80cc416032456b9ae497c50fa"
+sha256 = "3ac743eb659eb4b6dcec322ff2909101a830fdd14d9cd3ad55e3d9f6d70c91b6"
