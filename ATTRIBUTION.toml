@@ -3163,7 +3163,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "logo"
 usage = "Shown where upstream showed the ArtCraft wordmark and mark; the ShibShib name and logo identify the ShibShib project (NOTICE)"
-sha256 = "8a3e00b2f075c3a71613d2124e9005e4de3ed0d44d6b2465a97016671a9e7e58"
+sha256 = "8affba09f3cf161f35441489ce7e7333f0abb400a76042dc6345ad26aaf8e23d"
 
 [[asset]]
 path = "docs/shibshib/sf7aat-white.svg"
@@ -3174,7 +3174,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "logo"
 usage = "Shown where upstream showed the ArtCraft wordmark and mark; the ShibShib name and logo identify the ShibShib project (NOTICE)"
-sha256 = "edd4c312d89488b2e31098c17417744d72d4e085d4ff9ca43343e55117fac865"
+sha256 = "0bc68a3bd59356955918e844a9fbff296254e088425906a84a178b35cbf64dd7"
 
 [[asset]]
 path = "docs/shibshib/sf7aat-icon.svg"
