@@ -26,7 +26,7 @@ RTL_RULES = [
     ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();
     assert!(open.right() <= discord.left(), "Open {open:?} must not run under Discord {discord:?}");''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();
     assert!(open.right() <= discord.left(), "Open {open:?} must not run under the top-bar buttons {discord:?}");'''),
-    ('crates/ui-egui/tests/links.rs', """fn discord_button_in_the_top_bar_opens_discord() {
+    ('crates/ui-egui/tests/ui_group/links.rs', """fn discord_button_in_the_top_bar_opens_discord() {
     let mut h = harness(|_| {});
     h.get_by_label("Discord").click();
     h.run_steps(2);
@@ -36,9 +36,9 @@ RTL_RULES = [
     assert!(h.query_by_label("Discord").is_none());
     assert!(h.query_by_label("Join our Discord").is_none());
 """),
-    ('crates/ui-egui/tests/links.rs', '        ("Join our Discord", links::DISCORD),\n', ''),
-    ('crates/ui-egui/tests/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("Creative Studio");'),
-    ('crates/ui-egui/tests/links.rs', """    h.get_by_label("Join our Discord").click();
+    ('crates/ui-egui/tests/ui_group/links.rs', '        ("Join our Discord", links::DISCORD),\n', ''),
+    ('crates/ui-egui/tests/ui_group/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("Creative Studio");'),
+    ('crates/ui-egui/tests/ui_group/links.rs', """    h.get_by_label("Join our Discord").click();
     h.run_steps(2);
     assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
 }""", """    h.get_by_label("Creative Studio Website").click();
@@ -52,11 +52,16 @@ RTL_RULES = [
                         app.execute("help.discord");
                     }
 """, ''),
+    ('crates/ui-egui/src/chrome.rs', """                    // One click to the community, from anywhere in the app.
+                    if widgets::ghost_button_sized(ui, "messages-square", "Discord", tab_h).on_hover_text(pdfcraft_engine::links::DISCORD).clicked() {
+                        app.execute("help.discord");
+                    }
+""", ''),
     ('crates/ui-egui/src/home.rs', 'tl!("The upstream ArtCraft community")', '"Creative Studio"'),
     ('crates/ui-egui/src/home.rs', '                            ui.label(egui::RichText::new(tl!("Get help, share feedback and follow development on Discord.")).color(t.text_muted));\n', ''),
-    ('crates/ui-egui/tests/links.rs', '("Creative Studio Website", "https://getartcraft.com/apps/pdfcraft")', '("Creative Studio Website", "https://studio.creative.ps")'),
-    ('crates/ui-egui/tests/links.rs', '("sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("sf7aat on GitHub", "https://github.com/7mz410/CreativeStudio-sf7aat")'),
-    ('crates/ui-egui/tests/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://studio.creative.ps")'),
+    ('crates/ui-egui/tests/ui_group/links.rs', '("Creative Studio Website", "https://getartcraft.com/apps/pdfcraft")', '("Creative Studio Website", "https://studio.creative.ps")'),
+    ('crates/ui-egui/tests/ui_group/links.rs', '("sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("sf7aat on GitHub", "https://github.com/7mz410/CreativeStudio-sf7aat")'),
+    ('crates/ui-egui/tests/ui_group/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://studio.creative.ps")'),
     ('crates/engine/src/links.rs', '        assert_eq!(super::APP_PAGE, format!("{}/apps/{}", super::WEBSITE, super::APP));\n        assert_eq!(super::GITHUB, format!("https://github.com/storytold/{}", super::APP));', '        assert_eq!(super::APP_PAGE, "https://studio.creative.ps");\n        assert_eq!(super::GITHUB, "https://github.com/7mz410/CreativeStudio-sf7aat");'),
     # Links, the update check and upstream's ArtCraft wordmark/mark (docs/brand/, removed).
     ('crates/engine/src/links.rs', 'pub const WEBSITE: &str = "https://getartcraft.com";', 'pub const WEBSITE: &str = "https://studio.creative.ps";'),
@@ -157,6 +162,9 @@ def apply_rtl_rules() -> list:
     changed = []
     for rel, a, b in RTL_RULES:
         path = ROOT / rel
+        if not path.exists():
+            print(f'warning: {rel} is gone upstream; update RTL_RULES')
+            continue
         src = path.read_text(encoding='utf-8')
         if (not b or b not in src) and a in src:
             path.write_text(src.replace(a, b), encoding='utf-8')
