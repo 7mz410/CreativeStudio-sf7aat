@@ -72,6 +72,10 @@ RTL_RULES = [
     ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo-white.svg")', 'include_bytes!("../../../docs/studio/sf7aat-white.svg")'),
     ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo.svg")', 'include_bytes!("../../../docs/studio/sf7aat.svg")'),
     ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-mark.svg")', 'include_bytes!("../../../docs/studio/sf7aat-icon.svg")'),
+    # Upstream's Arabic display-order test: our Arabic name (studio/arabic_names.py) replaces the Latin one.
+    ('crates/ui-egui/src/i18n/mod.rs', 'assert_eq!(tr(ar, "About sf7aat"), "sf7aat حول");', 'assert_eq!(tr(ar, "About sf7aat"), "صفحات حول");'),
+    # No Discord button in the title bar (upstream's macOS title-bar band test, new in the 2026-10-12 merge).
+    ('crates/ui-egui/tests/ui.rs', '["Home", "band.pdf", "Open", "Discord", "Keyboard shortcuts"]', '["Home", "band.pdf", "Open", "Keyboard shortcuts"]'),
 ]
 
 SPECIFIC = {
@@ -132,7 +136,7 @@ def rebrand_locale(path: Path) -> bool:
         cells = line.split('\t')
         if len(cells) >= 3 and not line.startswith('#'):
             renamed = rename(cells[1])
-            if renamed != cells[1] and renamed in SOURCES:
+            if renamed != cells[1] and (renamed in SOURCES or (cells[1], renamed) in LITERALS):
                 cells = [cells[0], renamed, *(rename(c) for c in cells[2:])]
                 line = '\t'.join(cells)
             if (cells[0], cells[1]) in seen:

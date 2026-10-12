@@ -119,7 +119,7 @@
 	Current page — type a page number or label (such as iv) and press Enter	Geçerli sayfa — bir sayfa numarası veya etiketi (örneğin iv) yazıp Enter'a basın
 	Welcome to sf7aat	sf7aat'a Hoş Geldiniz
 	An open-source PDF workbench — local, private, and scriptable.	Açık kaynaklı bir PDF çalışma alanı — yerel, gizli ve komut dosyalarıyla yönetilebilir.
-	Join the ArtCraft community	ArtCraft topluluğuna katılın
+	The upstream ArtCraft community	ArtCraft topluluğuna katılın
 	Get help, share feedback and follow development on Discord.	Discord'da yardım alın, geri bildirim paylaşın ve geliştirmeyi takip edin.
 	Recommended tools	Önerilen araçlar
 	Use now	Şimdi kullan
@@ -716,6 +716,12 @@
 	Flip Vertical	Dikey Çevir
 	Replace Image…	Resmi Değiştir…
 	Save Image As…	Resmi Farklı Kaydet…
+	Copy Image	Resmi Kopyala
+	The image has been copied ({w} × {h} pixels)	Resim kopyalandı ({w} × {h} piksel)
+	Couldn't copy the image: {e}	Resim kopyalanamadı: {e}
+	Copy Image in Original Format	Resmi Özgün Biçimde Kopyala
+	The image has been copied as a {ext} file	Resim {ext} dosyası olarak kopyalandı
+	The page has changed; select the image again	Sayfa değişti; resmi yeniden seçin
 	Check for updates	Güncellemeleri denetle
 	No check has run yet.	Henüz denetim yapılmadı.
 	Checking for a newer version…	Daha yeni bir sürüm denetleniyor…

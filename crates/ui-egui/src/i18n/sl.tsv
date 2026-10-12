@@ -973,7 +973,7 @@
 	JavaScript, e.g. getField("total").value	JavaScript, npr. getField("total").value
 	Join our Discord	Discord kanal
 	Upstream Community on Discord	Pridružite se Discordu ArtCraft
-	Join the ArtCraft community	Pridružite se skupnosti ArtCraft
+	The upstream ArtCraft community	Pridružite se skupnosti ArtCraft
 	July	Julij
 	June	Junij
 	Justify	Obojestransko poravnano
@@ -1536,6 +1536,12 @@
 	Save & Close	Shrani in zapri
 	Save (M4)	Shrani (M4)
 	Save Image As…	Shrani sliko kot…
+	Copy Image	Kopiraj sliko
+	The image has been copied ({w} × {h} pixels)	Slika je kopirana ({w} × {h} slikovnih pik)
+	Couldn't copy the image: {e}	Slike ni bilo mogoče kopirati: {e}
+	Copy Image in Original Format	Kopiraj sliko v izvirni obliki
+	The image has been copied as a {ext} file	Slika je kopirana kot datoteka {ext}
+	The page has changed; select the image again	Stran se je spremenila; znova izberite sliko
 	Save as PDF	Shrani kot PDF
 	Save as PDF/A	Shrani kot PDF/A
 	Save as PDF/A-1b	Shrani kot PDF/A-1b
