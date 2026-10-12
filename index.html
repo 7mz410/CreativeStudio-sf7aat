@@ -6,8 +6,8 @@
     <title>sf7aat</title>
     
 <script type="module">
-import init, * as bindings from './pdfcraft-web-6be42394df24bad4.js';
-const wasm = await init({ module_or_path: './pdfcraft-web-6be42394df24bad4_bg.wasm' });
+import init, * as bindings from './pdfcraft-web-b78c5a0890134906.js';
+const wasm = await init({ module_or_path: './pdfcraft-web-b78c5a0890134906_bg.wasm' });
 
 
 window.wasmBindings = bindings;
@@ -56,7 +56,7 @@ dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
     .ss-shadow { opacity: .5; }
   </style>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet">
-<link rel="modulepreload" href="./pdfcraft-web-6be42394df24bad4.js" crossorigin="anonymous" integrity="sha384-+iD+gMU1thLiw/MBhm+b6TFXxo08u8O+vD1vNmU3w1qyXuPasp/9KmOSzA0aszcH"><link rel="preload" href="./pdfcraft-web-6be42394df24bad4_bg.wasm" crossorigin="anonymous" integrity="sha384-0oI/Q164ZRvSEAhfKTvHz6EHRJTq1KE+TI215h8qIx7yY1PQfQe5EdBaDoEAweMq" as="fetch" type="application/wasm">  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="modulepreload" href="./pdfcraft-web-b78c5a0890134906.js" crossorigin="anonymous" integrity="sha384-TaKqiWIMtFH4LT0HZhRJHzeEZ+iCe+jfPzTdKav5zHmZu6LNawmOn+NJgWHEp5QL"><link rel="preload" href="./pdfcraft-web-b78c5a0890134906_bg.wasm" crossorigin="anonymous" integrity="sha384-QiaGTsiCFRmAoHjB+q4TH25CszlxRuJoYIPvUVUCRj9+7Gg1Ko6OUzc9njlM6cv9" as="fetch" type="application/wasm">  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
   <body>
     <canvas id="pdfcraft"></canvas>
