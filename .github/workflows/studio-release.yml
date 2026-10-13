@@ -20,5 +20,5 @@ jobs:
       app: sf7aat
       package: pdfcraft
       version_var: PDFCRAFT_VERSION
-      bundle: PdfCraft.app
+      bundle: sf7aat.app
       tag: ${{ github.ref_name }}
