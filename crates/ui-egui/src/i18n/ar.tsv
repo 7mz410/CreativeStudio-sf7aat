@@ -2711,3 +2711,7 @@ certificate	Version	الإصدار
 	Make properties default	جعل الخصائص افتراضية
 	Pages selected	الصفحات المحددة
 	Page properties	خصائص الصفحة
+theme	Appearance	المظهر
+	Mouse wheel scroll speed	سرعة التمرير بعجلة الماوس
+	This file changed on disk. Reload it to see the new version; your unsaved changes will be lost.	تغيّر هذا الملف على القرص. أعد تحميله لرؤية النسخة الجديدة؛ ستفقد التغييرات غير المحفوظة.
+	The password must have at least 8 characters.	يجب أن تتكوّن كلمة المرور من 8 أحرف على الأقل.
