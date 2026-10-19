@@ -162,6 +162,7 @@
 	Next page	الصفحة التالية
 	Previous page	الصفحة السابقة
 	Current page — type a page number or label (such as iv) and press Enter	الصفحة الحالية — اكتب رقم صفحة أو تسميتها (مثل iv) ثم اضغط Enter
+	Zoom — type a percentage and press Enter	التكبير — اكتب نسبة مئوية واضغط Enter
 	Welcome to sf7aat	مرحبًا بك في صفحات
 	An open-source PDF workbench — local, private, and scriptable.	منضدة عمل مفتوحة المصدر لملفات PDF — محلية وخاصة وقابلة للبرمجة.
 	The upstream ArtCraft community	انضم إلى مجتمع ArtCraft
@@ -2710,7 +2711,3 @@ certificate	Version	الإصدار
 	Make properties default	جعل الخصائص افتراضية
 	Pages selected	الصفحات المحددة
 	Page properties	خصائص الصفحة
-	The password must have at least 8 characters.	يجب ألا تقل كلمة المرور عن 8 أحرف.
-	Mouse wheel scroll speed	سرعة تمرير عجلة الفأرة
-	This file changed on disk. Reload it to see the new version; your unsaved changes will be lost.	تغيّر هذا الملف على القرص. أعد تحميله لرؤية النسخة الجديدة؛ ستفقد التغييرات غير المحفوظة.
-theme	Appearance	المظهر
