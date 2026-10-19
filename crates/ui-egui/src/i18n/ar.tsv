@@ -2710,3 +2710,7 @@ certificate	Version	الإصدار
 	Make properties default	جعل الخصائص افتراضية
 	Pages selected	الصفحات المحددة
 	Page properties	خصائص الصفحة
+	The password must have at least 8 characters.	يجب ألا تقل كلمة المرور عن 8 أحرف.
+	Mouse wheel scroll speed	سرعة تمرير عجلة الفأرة
+	This file changed on disk. Reload it to see the new version; your unsaved changes will be lost.	تغيّر هذا الملف على القرص. أعد تحميله لرؤية النسخة الجديدة؛ ستفقد التغييرات غير المحفوظة.
+theme	Appearance	المظهر
