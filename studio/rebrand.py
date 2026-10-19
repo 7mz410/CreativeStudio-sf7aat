@@ -189,6 +189,16 @@ def main():
     plist = ROOT / 'packaging/macos/Info.plist.in'
     if plist.exists() and rebrand_plist(plist):
         changed.append(plist)
+    # The app id (Wayland id, gate test) matches the macOS bundle id; Linux packaging file names keep upstream's.
+    for rel in ('apps/pdfcraft/src/main.rs', 'xtask/src/gates.rs', 'packaging/linux/ai.storyteller.pdfcraft.desktop'):
+        path = ROOT / rel
+        src = path.read_text(encoding='utf-8')
+        out = src.replace('const APP_ID: &str = "ai.storyteller.pdfcraft"', 'const APP_ID: &str = "ps.creative.studio.sf7aat"')
+        out = out.replace('StartupWMClass=ai.storyteller.pdfcraft', 'StartupWMClass=ps.creative.studio.sf7aat')
+        out = out.replace('contains("<string>ai.storyteller.pdfcraft</string>")', 'contains("<string>ps.creative.studio.sf7aat</string>")')
+        if out != src:
+            path.write_text(out, encoding='utf-8')
+            changed.append(path)
     for p in changed:
         print('rebranded', p.relative_to(ROOT))
 

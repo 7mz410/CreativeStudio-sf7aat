@@ -46,7 +46,7 @@ mod updates;
 mod windows_manifest;
 
 /// Freedesktop app id: the `.desktop` file name and the hicolor icon name.
-const APP_ID: &str = "ai.storyteller.pdfcraft";
+const APP_ID: &str = "ps.creative.studio.sf7aat";
 
 /// The app icon (assets/app-icon/README.md). macOS gets the version on Apple's icon grid, with a
 /// transparent margin; Windows and Linux get the full-bleed tile.
