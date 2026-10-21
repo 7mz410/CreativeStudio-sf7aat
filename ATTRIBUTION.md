@@ -4,7 +4,7 @@
 
 Every asset PdfCraft includes, bundles or uses to build its published material, with its author, source and licence. The policy is in [AGENTS.md](AGENTS.md) §1. The machine-readable list, with SHA-256 hashes, is [ATTRIBUTION.toml](ATTRIBUTION.toml). Licence texts are kept beside the assets and summarised in [NOTICE](NOTICE).
 
-## In this repository (267)
+## In this repository (271)
 
 | Asset | Title | Author | Licence | Source | Used for |
 |---|---|---|---|---|---|
@@ -275,6 +275,10 @@ Every asset PdfCraft includes, bundles or uses to build its published material, 
 | `docs/studio/sf7aat.svg` | sf7aat logo | Hamza Abu Ayyash (Creative Studio) | MIT OR Apache-2.0 | Original work | Shown where upstream showed the ArtCraft wordmark and mark; the Creative Studio name and logo identify the Creative Studio project (NOTICE) |
 | `docs/studio/sf7aat-white.svg` | sf7aat logo (white text) | Hamza Abu Ayyash (Creative Studio) | MIT OR Apache-2.0 | Original work | Shown where upstream showed the ArtCraft wordmark and mark; the Creative Studio name and logo identify the Creative Studio project (NOTICE) |
 | `docs/studio/sf7aat-icon.svg` | sf7aat tile | Hamza Abu Ayyash (Creative Studio) | MIT OR Apache-2.0 | Original work | Shown where upstream showed the ArtCraft wordmark and mark; the Creative Studio name and logo identify the Creative Studio project (NOTICE) |
+| `assets/icons/superscript.svg` | Lucide icon "superscript" | Lucide Contributors (portions Cole Bemis, Feather) | ISC | https://github.com/lucide-icons/lucide (npm lucide-static 1.49.0, icons/superscript.svg) | UI icon, embedded via crates/ui-egui/src/icon_data.rs |
+| `assets/icons/subscript.svg` | Lucide icon "subscript" | Lucide Contributors (portions Cole Bemis, Feather) | ISC | https://github.com/lucide-icons/lucide (npm lucide-static 1.49.0, icons/subscript.svg) | UI icon, embedded via crates/ui-egui/src/icon_data.rs |
+| `assets/icons/pilcrow.svg` | Lucide icon "pilcrow" | Lucide Contributors (portions Cole Bemis, Feather) | ISC | https://github.com/lucide-icons/lucide (npm lucide-static 1.49.0, icons/pilcrow.svg) | UI icon, embedded via crates/ui-egui/src/icon_data.rs |
+| `assets/icons/move-horizontal.svg` | Lucide icon "move-horizontal" | Lucide Contributors (portions Cole Bemis, Feather) | ISC | https://github.com/lucide-icons/lucide (npm lucide-static 1.49.0, icons/move-horizontal.svg) | UI icon, embedded via crates/ui-egui/src/icon_data.rs |
 
 ## Compiled in through dependencies (6)
 

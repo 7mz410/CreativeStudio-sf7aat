@@ -1334,6 +1334,10 @@ mod tests {
         assert!(parser.acquire(|| panic!("must not retry"), || false).unwrap().is_none());
     }
 
+    /// The waits here only guard against a hang; they don't time anything. The initializer is
+    /// held until the end of the test, so a waiter that can't cancel waits forever and fails the
+    /// guard however long it is, and a correct one returns as soon as its thread runs. Two
+    /// seconds was too short for a busy FreeBSD VM in CI to start the threads (#1970).
     #[cfg(not(target_arch = "wasm32"))]
     #[test]
     fn waiting_worker_can_cancel_before_initializer_returns() {
@@ -1341,6 +1345,7 @@ mod tests {
             sync::{atomic::AtomicUsize, mpsc},
             time::Duration,
         };
+        const HANG_GUARD: Duration = Duration::from_secs(600);
         let parser = Arc::new(PoolParser::default());
         let (started_tx, started_rx) = mpsc::channel();
         let (release_tx, release_rx) = mpsc::channel();
@@ -1350,14 +1355,16 @@ mod tests {
                 parser.acquire(
                     || {
                         started_tx.send(()).unwrap();
-                        release_rx.recv().unwrap();
+                        // A failed test drops the sender: that ends the hold, it is not a
+                        // second failure.
+                        let _ = release_rx.recv();
                         Pdf::new(ONE_PAGE.to_vec()).ok()
                     },
                     || false,
                 )
             })
         };
-        started_rx.recv_timeout(Duration::from_secs(2)).unwrap();
+        started_rx.recv_timeout(HANG_GUARD).expect("the initializer starts");
         let cancelled = Arc::new(AtomicBool::new(false));
         let checks = Arc::new(AtomicUsize::new(0));
         let (done_tx, done_rx) = mpsc::channel();
@@ -1374,13 +1381,13 @@ mod tests {
                 done_tx.send(result.unwrap().is_none()).unwrap();
             })
         };
-        let deadline = std::time::Instant::now() + Duration::from_secs(2);
+        let deadline = std::time::Instant::now() + HANG_GUARD;
         while checks.load(Ordering::Relaxed) == 0 {
-            assert!(std::time::Instant::now() < deadline);
-            std::thread::yield_now();
+            assert!(std::time::Instant::now() < deadline, "the waiter never checked for cancellation");
+            std::thread::sleep(Duration::from_millis(1));
         }
         cancelled.store(true, Ordering::Release);
-        assert!(done_rx.recv_timeout(Duration::from_secs(2)).unwrap());
+        assert!(done_rx.recv_timeout(HANG_GUARD).expect("the waiter cancels while the initializer is held"));
         waiter.join().unwrap();
         release_tx.send(()).unwrap();
         assert!(initializer.join().unwrap().unwrap().is_some());
@@ -1546,13 +1553,24 @@ mod tests {
         ]);
         shared_bad.entered.wait();
         shared_healthy.entered.wait();
-        assert!(pool.try_recv().is_none(), "shared timeouts retry instead of answering yet");
+        // This watchdog pass retries both pages privately. Page 1's retry has no gate, so on a
+        // loaded machine it can finish before this same call reads the results: that early
+        // answer is the healthy page, never a timeout error.
+        let early = pool.try_recv();
+        assert!(
+            early.as_ref().is_none_or(|page| page.request.page == 1 && page.error.is_none()),
+            "shared timeouts retry instead of answering with an error: {:?}",
+            early.as_ref().map(|page| (page.request.page, &page.error))
+        );
         shared_bad.release.wait();
         shared_healthy.release.wait();
         shared_bad.finished.wait();
         shared_healthy.finished.wait();
         private_bad.entered.wait();
-        let healthy = pool.results.recv_timeout(Duration::from_secs(30)).expect("healthy private retry");
+        let healthy = match early {
+            Some(page) => page,
+            None => pool.results.recv_timeout(Duration::from_secs(30)).expect("healthy private retry"),
+        };
         assert!(healthy.error.is_none(), "{:?}", healthy.error);
         assert_eq!((healthy.request.page, healthy.width, healthy.height, healthy.request.tag), (1, 100, 50, 41));
         pool.watchdog();
@@ -3419,6 +3437,36 @@ trailer << /Root 1 0 R >>
         }
     }
 
+    /// A shaded Type 3 glyph must use bounds in device coordinates at every position.
+    #[test]
+    fn shaded_type3_glyph_draws_at_multiple_positions() {
+        let content = "BT /F 30 Tf 1 0 0 1 50 70 Tm (A) Tj 1 0 0 1 220 70 Tm (A) Tj ET";
+        let glyph = "100 0 d0 0 0 100 100 re W n /S sh";
+        let pdf = format!(
+            "%PDF-1.7
+1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj
+2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj
+3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 300 150] /Resources << /Font << /F 5 0 R >> >> /Contents 4 0 R >> endobj
+4 0 obj << /Length {} >> stream
+{content}
+endstream endobj
+5 0 obj << /Type /Font /Subtype /Type3 /FontBBox [0 0 100 100] /FontMatrix [0.01 0 0 0.01 0 0] /CharProcs << /A 6 0 R >> /Encoding << /Differences [65 /A] >> /FirstChar 65 /LastChar 65 /Widths [100] /Resources << /Shading << /S 7 0 R >> >> >> endobj
+6 0 obj << /Length {} >> stream
+{glyph}
+endstream endobj
+7 0 obj << /ShadingType 2 /ColorSpace /DeviceRGB /Coords [0 0 100 0] /Function << /FunctionType 2 /Domain [0 1] /C0 [1 0 0] /C1 [0 0 1] /N 1 >> /Extend [true true] >> endobj
+trailer << /Root 1 0 R >>
+%%EOF", content.len(), glyph.len()
+        );
+        let mut renderer = PageRenderer::new(Arc::new(pdf.into_bytes()), RenderConfig::default());
+        let page = renderer.render(RenderRequest { page: 0, kind: RequestKind::Pixels, tile: None, scale: 1.0, tag: 0, ..Default::default() });
+        assert!(page.error.is_none(), "{:?}", page.error);
+        for x in [65usize, 235] {
+            let pixel = &page.rgba[(65 * 300 + x) * 4..][..4];
+            assert!(pixel[0] < 240 && pixel[2] < 240 && pixel[1] < 10, "glyph at {x}: {pixel:?}");
+        }
+    }
+
     /// From `cargo xtask fuzz`: a Type 3 font without /Resources inherits the page's, where its
     /// own name is defined, and its glyph shows text in itself (vendored patch:
     /// `MAX_PAINT_NESTING`). Must terminate; a normal Type 3 glyph must still paint.
@@ -4562,6 +4610,88 @@ trailer << /Root 1 0 R >>
         pdf.extend_from_slice(stream);
         pdf.extend_from_slice(b"\nendstream endobj\ntrailer << /Root 1 0 R >>\n%%EOF\n");
         pdf
+    }
+
+    /// A document whose `pages` page dictionaries all live in one (uncompressed) object stream,
+    /// found through a cross-reference stream: every page shows the content `0 0 1 rg 10 10 80 80
+    /// re f` on a 100 pt square, except the last, which is 50 × 100 pt.
+    fn pages_in_one_object_stream(pages: usize) -> Vec<u8> {
+        // 1 catalog, 2 page tree, 3 content, 4 the object stream, 5.. the pages, then the xref.
+        let page = |n: usize| {
+            let size = if n + 1 == pages { "50 100" } else { "100 100" };
+            format!("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 {size}] /Contents 3 0 R >>\n")
+        };
+        let (mut index, mut body) = (String::new(), String::new());
+        for n in 0..pages {
+            index.push_str(&format!("{} {} ", n + 5, body.len()));
+            body.push_str(&page(n));
+        }
+        index.push('\n');
+        let kids: Vec<String> = (0..pages).map(|n| format!("{} 0 R", n + 5)).collect();
+        let content = "0 0 1 rg 10 10 80 80 re f";
+        let mut pdf = b"%PDF-1.5\n".to_vec();
+        let mut offsets = Vec::new();
+        for (num, obj) in [
+            (1, "<< /Type /Catalog /Pages 2 0 R >>".to_string()),
+            (2, format!("<< /Type /Pages /Kids [{}] /Count {pages} >>", kids.join(" "))),
+            (3, format!("<< /Length {} >>\nstream\n{content}\nendstream", content.len())),
+            (
+                4,
+                format!(
+                    "<< /Type /ObjStm /N {pages} /First {} /Length {} >>\nstream\n{index}{body}\nendstream",
+                    index.len(),
+                    index.len() + body.len()
+                ),
+            ),
+        ] {
+            offsets.push(pdf.len());
+            pdf.extend_from_slice(format!("{num} 0 obj\n{obj}\nendobj\n").as_bytes());
+        }
+        // Cross-reference stream rows of /W [1 4 4]: free 0, objects 1–4 in the file, the pages
+        // at their index in object 4, and the cross-reference stream itself.
+        let xref_num = pages + 5;
+        let xref_at = pdf.len();
+        let mut rows = vec![0u8, 0, 0, 0, 0, 0, 0, 0xff, 0xff];
+        let row = |kind: u8, a: usize, b: usize| [[kind].as_slice(), &(a as u32).to_be_bytes(), &(b as u32).to_be_bytes()].concat();
+        for at in &offsets {
+            rows.extend(row(1, *at, 0));
+        }
+        for n in 0..pages {
+            rows.extend(row(2, 4, n));
+        }
+        rows.extend(row(1, xref_at, 0));
+        pdf.extend_from_slice(
+            format!("{xref_num} 0 obj\n<< /Type /XRef /Size {} /W [1 4 4] /Root 1 0 R /Length {} >>\nstream\n", xref_num + 1, rows.len()).as_bytes(),
+        );
+        pdf.extend_from_slice(&rows);
+        pdf.extend_from_slice(format!("\nendstream\nendobj\nstartxref\n{xref_at}\n%%EOF\n").as_bytes());
+        pdf
+    }
+
+    /// An object stream's index of `objnum offset` pairs is read once, not for every object
+    /// fetched from it (vendored hayro-syntax patch 22). Read again each time, all of a stream of
+    /// N objects took N² steps: a Firefox page keeping 65,542 objects in one stream took 37 s to
+    /// draw and 40 s to extract its text. These 40,000 pages in one stream took about a minute
+    /// to open that way; now a fraction of a second. The last page, at the end of the index,
+    /// still has its own size.
+    #[test]
+    fn objects_in_one_large_object_stream_are_read_in_linear_time() {
+        const PAGES: usize = 40_000;
+        let pdf = pages_in_one_object_stream(PAGES);
+        let (tx, rx) = std::sync::mpsc::channel();
+        std::thread::spawn(move || {
+            let mut r = PageRenderer::new(Arc::new(pdf), RenderConfig::default());
+            let first = r.render(RenderRequest { page: 0, kind: RequestKind::Pixels, tile: None, scale: 1.0, tag: 0, preview: false });
+            let last = r.render(RenderRequest { page: PAGES - 1, kind: RequestKind::Pixels, tile: None, scale: 1.0, tag: 0, preview: false });
+            let _ = tx.send((first, last));
+        });
+        let (first, last) =
+            rx.recv_timeout(std::time::Duration::from_secs(20)).expect("reading every object of one object stream must not take quadratic time");
+        assert!(first.error.is_none(), "{:?}", first.error);
+        assert_eq!((first.width, first.height), (100, 100));
+        assert_eq!(rgb_at(&first.rgba, first.width as usize, 50, 50), [0, 0, 255]);
+        assert!(last.error.is_none(), "{:?}", last.error);
+        assert_eq!((last.width, last.height), (50, 100), "the last page is read from its own offset");
     }
 
     /// A page whose content expands far beyond its compressed stream stops at the expansion budget,
