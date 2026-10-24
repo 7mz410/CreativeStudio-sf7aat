@@ -2795,3 +2795,14 @@ theme	Appearance	المظهر
 	field names can't contain a period: {name}	لا يمكن أن تحتوي أسماء الحقول على نقطة: {name}
 	two cells would both be named {name}	ستحمل خليتان الاسم نفسه {name}
 	a field named {name} already exists	يوجد حقل باسم {name} بالفعل
+	Remove {standard} identification	إزالة تعريف {standard}
+	The certificate of {} has critical extensions PdfCraft does not recognize, so it is not used to vouch for {}.	تحتوي شهادة {} على ملحقات حرجة لا يتعرف عليها PdfCraft، لذا لا تُستخدم للمصادقة على {}.
+	The signature's signed attributes have no content type, which CMS requires; it was read anyway.	لا تحتوي السمات الموقعة للتوقيع على نوع محتوى، وهو ما يتطلبه CMS؛ تمت قراءته على أي حال.
+	The signature's signed attributes have no message digest, so the signature does not cover the document.	لا تحتوي السمات الموقعة للتوقيع على خلاصة رسالة، لذا لا يغطي التوقيع المستند.
+	The signature's signed attributes name a content type other than data, so it is not a signature of the document.	تحدد السمات الموقعة للتوقيع نوع محتوى آخر غير data، لذا فهو ليس توقيعاً للمستند.
+	The timestamp authority's certificate is not issued for time stamping.	شهادة هيئة الختم الزمني غير صادرة للختم الزمني.
+	This signature uses an RSA key shorter than 2048 bits, which is no longer considered strong enough for signatures. It still validates, but it should not be relied on.	يستخدم هذا التوقيع مفتاح RSA أقصر من 2048 بت، والذي لم يعد يُعتبر قوياً بما يكفي للتوقيعات. لا يزال صالحاً، ولكن لا ينبغي الاعتماد عليه.
+	a table has 1 to {max} columns	يحتوي الجدول من 1 إلى {max} من الأعمدة
+	a table has 1 to {max} rows	يحتوي الجدول من 1 إلى {max} من الصفوف
+	the area, the spacing and the column widths must be numbers, the spacing 0 or more and each width more than 0	يجب أن تكون المساحة والتباعد وعروض الأعمدة أرقاماً، على أن يكون التباعد 0 أو أكثر وكل عرض أكثر من 0
+	the first row number can be at most {max}	يمكن أن يكون رقم الصف الأول {max} كحد أقصى
