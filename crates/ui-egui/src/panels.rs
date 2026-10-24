@@ -31,15 +31,20 @@ pub fn left_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                 Some(g) => tool_detail(app, ui, &t, g),
                 None => app.left = LeftPanel::AllTools,
             },
+            LeftPanel::CalculationOrder => crate::calc_order_ui::panel(app, ui, &t),
         },
     );
 }
 
-fn panel_header(ui: &mut egui::Ui, t: &Tokens, title: &str, back: bool) -> (bool, bool) {
+/// A panel's title row: Back (with `back` as its tooltip) when given, the title and Close.
+/// Returns whether Back and Close were clicked.
+pub(crate) fn panel_header(ui: &mut egui::Ui, t: &Tokens, title: &str, back: Option<&str>) -> (bool, bool) {
     let mut go_back = false;
     let mut close = false;
     ui.horizontal(|ui| {
-        if back && icons::button(ui, "chevron-left", 26.0, false, tl!("Back to all tools")).clicked() {
+        if let Some(tip) = back
+            && icons::button(ui, "chevron-left", 26.0, false, tip).clicked()
+        {
             go_back = true;
         }
         // Reserve space for Close before laying out the translated title. Long tool names
@@ -51,18 +56,19 @@ fn panel_header(ui: &mut egui::Ui, t: &Tokens, title: &str, back: bool) -> (bool
             close = true;
         }
     });
-    ui.add_space(2.0);
-    ui.separator();
     ui.add_space(4.0);
+    ui.separator();
+    ui.add_space(6.0);
     (go_back, close)
 }
 
 fn all_tools(app: &mut PdfCraftApp, ui: &mut egui::Ui, t: &Tokens) {
-    let (_, close) = panel_header(ui, t, "All tools", false);
+    let (_, close) = panel_header(ui, t, "All tools", None);
     if close {
         app.left_open = false;
     }
     egui::ScrollArea::vertical().auto_shrink([false, false]).show(ui, |ui| {
+        ui.add_space(2.0);
         let shown = if app.all_tools_expanded { TOOL_GROUPS.len() } else { COLLAPSED_TOOLS.min(TOOL_GROUPS.len()) };
         for g in &TOOL_GROUPS[..shown] {
             if tool_row(ui, t, g).clicked() {
@@ -148,7 +154,7 @@ fn tool_detail(app: &mut PdfCraftApp, ui: &mut egui::Ui, t: &Tokens, g: &'static
         edit_panel(app, ui, t, g);
         return;
     }
-    let (back, close) = panel_header(ui, t, g.label, true);
+    let (back, close) = panel_header(ui, t, g.label, Some(tl!("Back to all tools")));
     if back {
         app.left = LeftPanel::AllTools;
         app.mode = crate::Mode::AllTools;
@@ -195,6 +201,7 @@ fn tool_detail(app: &mut PdfCraftApp, ui: &mut egui::Ui, t: &Tokens, g: &'static
     let marks = if footer { app.active_ids().and_then(|(_, id)| app.session.get(id)).map_or(0, |d| d.redaction_marks()) } else { 0 };
     let list_h = if footer { (ui.available_height() - 52.0).max(80.0) } else { ui.available_height() };
     egui::ScrollArea::vertical().auto_shrink([false, false]).max_height(list_h).show(ui, |ui| {
+        ui.add_space(2.0);
         for s in g.sections {
             widgets::section_title(ui, tl!(s.title));
             for item in s.items {
@@ -309,9 +316,9 @@ fn edit_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui, t: &Tokens, g: &'static 
             app.left_open = false;
         }
     });
-    ui.add_space(2.0);
-    ui.separator();
     ui.add_space(4.0);
+    ui.separator();
+    ui.add_space(6.0);
     // Several objects selected: how many, and how to move them. Acrobat's panel has no idle hint.
     let count = app.active_ids().filter(|_| app.quick_tool == crate::QuickTool::EditText).map_or(0, |(i, _)| app.views[i].objects.count());
     if count > 0 {
@@ -648,6 +655,7 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     let mut nav: Option<Nav> = None;
     let mut close = false;
     let mut toggle_layer: Option<(usize, bool)> = None;
+    let mut reset_layers = false;
     let mut attachment_action: Option<(usize, bool)> = None; // (index, open instead of save)
     let mut bm_action: Option<BmAction> = None;
     let mut bm_expand: Option<usize> = None;
@@ -740,6 +748,16 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                                 }
                             });
                         }
+                        if panel == RightPanel::Layers && !info.layers.is_empty() {
+                            let more = icons::button(ui, "ellipsis", 26.0, false, tl!("Layer options"));
+                            egui::Popup::menu(&more).show(|ui| {
+                                ui.set_min_width(200.0);
+                                if ui.button(tl!("Reset to Initial Visibility")).clicked() {
+                                    reset_layers = true;
+                                    ui.close();
+                                }
+                            });
+                        }
                         let new_tip = crate::commands::command_tip(ui.ctx(), tl!("New bookmark ({key})"), "bookmark.add");
                         if panel == RightPanel::Bookmarks && bm_editable && icons::button(ui, "bookmark-plus", 26.0, false, &new_tip).clicked() {
                             bm_action = Some(BmAction::New);
@@ -780,6 +798,10 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
                         bookmark_matches.insert(ancestor.clone());
                         ancestor.pop();
                     }
+                }
+                if panel == RightPanel::Pages {
+                    let enabled = !modal && view.panel_drag.is_none();
+                    thumbnail_size(ui, &t, view, enabled);
                 }
                 egui::ScrollArea::vertical().auto_shrink([false, false]).show(ui, |ui| match panel {
                     RightPanel::Comments => {
@@ -959,6 +981,9 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
     {
         app.views[index].invalidate_content();
     }
+    if reset_layers && app.session.reset_layers(id) {
+        app.views[index].invalidate_content();
+    }
     match nav {
         Some(Nav::Page(p)) => app.views[index].go_to_page(p),
         Some(Nav::Dest(p, dest)) => match app.session.get(id) {
@@ -967,7 +992,11 @@ pub fn right_panel(app: &mut PdfCraftApp, ui: &mut egui::Ui) {
         },
         Some(Nav::Flash(p, r)) => {
             let v = &mut app.views[index];
-            v.go_to_page(p);
+            if let Some(doc) = app.session.get(id) {
+                v.reveal_rect(p, r, &doc.info);
+            } else {
+                v.go_to_page(p);
+            }
             v.flash = Some((p, r, 0.0));
         }
         None => {}
@@ -992,6 +1021,10 @@ pub enum BmAction {
     StartRename(Vec<usize>),
     Rename(Vec<usize>, String),
     SetToCurrentPage(Vec<usize>),
+    /// Make the title bold or italic or not (`None` keeps that one).
+    SetStyle(Vec<usize>, Option<bool>, Option<bool>),
+    /// Colour the title; black is the default.
+    SetColor(Vec<usize>, [f64; 3]),
     Delete(Vec<usize>),
     MoveUp(Vec<usize>),
     MoveDown(Vec<usize>),
@@ -1065,6 +1098,23 @@ pub(crate) fn ellipsized_prefix(text: &str, mut fits: impl FnMut(&str) -> bool) 
     }
 }
 
+/// How a bookmark's title is drawn: in its own style and colour (ISO 32000-2 §12.3.3, Tables 151
+/// and 152), bold in the heavier face and italic slanted, its colour kept readable on the panel.
+/// Top-level bookmarks without a style keep the medium face.
+fn title_format(item: &OutlineItem, depth: usize, t: &Tokens) -> egui::TextFormat {
+    let font_id = match (item.bold, depth) {
+        (true, _) => theme::semibold(13.0),
+        (false, 0) => theme::medium(13.0),
+        (false, _) => theme::regular(13.0),
+    };
+    let color = item.color.map_or(t.text, |rgb| {
+        // Each component is within 0–1, so the rounded value fits a byte.
+        let [r, g, b] = rgb.map(|c| (c * 255.0).round() as u8);
+        theme::readable(egui::Color32::from_rgb(r, g, b), t.panel, t.text)
+    });
+    egui::TextFormat { font_id, color, italics: item.italic, ..Default::default() }
+}
+
 fn outline_item(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, item: &OutlineItem, path: &[usize], siblings: usize, cx: &mut OutlineCtx<'_>) {
     if cx.searching && !cx.matches.contains(path) {
         return;
@@ -1118,9 +1168,10 @@ fn outline_item(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, item: &OutlineIte
             })
         });
         let label_w = label_galley.as_ref().map_or(0.0, |g| g.size().x);
-        let font = if depth == 0 { theme::medium(13.0) } else { theme::regular(13.0) };
         let wrap_w = (ui.available_width() - indent - 20.0 - label_w - 12.0).max(60.0);
-        let galley = ui.fonts_mut(|f| f.layout(item.title.clone(), font, t.text, wrap_w));
+        let mut job = egui::text::LayoutJob::single_section(item.title.clone(), title_format(item, depth, t));
+        job.wrap.max_width = wrap_w;
+        let galley = ui.fonts_mut(|f| f.layout_job(job));
         let h = (galley.size().y + 12.0).max(28.0);
         let (rect, resp) = ui.allocate_exact_size(vec2(ui.available_width(), h), Sense::click());
         resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, true, &item.title));
@@ -1163,6 +1214,26 @@ fn outline_item(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, item: &OutlineIte
                 pick(ui, tl!("Rename"), true, BmAction::StartRename(path.to_vec()));
                 let set_page = crate::i18n::fmt(tl!("Set to current page ({n})"), &[("n", &(current + 1).to_string())]);
                 pick(ui, &set_page, true, BmAction::SetToCurrentPage(path.to_vec()));
+                // The title's style and colour (ISO 32000-2 §12.3.3, Tables 151 and 152).
+                let mut styled = None;
+                ui.menu_button(tl!("Style"), |ui| {
+                    let (mut bold, mut italic) = (item.bold, item.italic);
+                    if ui.add(crate::widgets::checkbox(&mut bold, tl!("Bold"))).clicked() {
+                        styled = Some(BmAction::SetStyle(path.to_vec(), Some(bold), None));
+                    }
+                    if ui.add(crate::widgets::checkbox(&mut italic, tl!("Italic"))).clicked() {
+                        styled = Some(BmAction::SetStyle(path.to_vec(), None, Some(italic)));
+                    }
+                });
+                ui.menu_button(tl!("Colour"), |ui| {
+                    let current = item.color.map_or([0.0; 3], |c| c.map(f64::from));
+                    if let Some(c) = crate::comments::swatch_grid(ui, Some(current)) {
+                        styled = Some(BmAction::SetColor(path.to_vec(), c));
+                    }
+                });
+                if styled.is_some() {
+                    ui.close();
+                }
                 ui.separator();
                 pick(ui, tl!("Move up"), i > 0, BmAction::MoveUp(path.to_vec()));
                 pick(ui, tl!("Move down"), i + 1 < siblings, BmAction::MoveDown(path.to_vec()));
@@ -1170,6 +1241,9 @@ fn outline_item(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, item: &OutlineIte
                 pick(ui, tl!("Outdent"), depth > 0, BmAction::Outdent(path.to_vec()));
                 ui.separator();
                 pick(ui, tl!("Delete"), true, BmAction::Delete(path.to_vec()));
+                if let Some(a) = styled {
+                    *cx.action = Some(a);
+                }
             });
         }
     }
@@ -1180,6 +1254,57 @@ fn outline_item(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, item: &OutlineIte
             outline_item(ui, t, info, c, &p, item.children.len(), cx);
         }
     }
+}
+
+/// Size controls stay above the scroll area, so they remain reachable on long documents.
+fn thumbnail_size(ui: &mut egui::Ui, t: &Tokens, view: &mut crate::DocView, enabled: bool) {
+    let before = view.thumbnail_zoom();
+    let mut zoom = before;
+    let label = ui
+        .horizontal(|ui| {
+            let label = ui.label(egui::RichText::new(tl!("Thumbnail size")).small().color(t.text_muted));
+            ui.with_layout(Layout::right_to_left(Align::Center), |ui| {
+                ui.label(egui::RichText::new(format!("{:.0}%", before * 100.0)).small().color(t.text_muted));
+            });
+            label
+        })
+        .inner;
+    ui.add_enabled_ui(enabled, |ui| {
+        ui.spacing_mut().slider_width = (ui.available_width() - 52.0 - 2.0 * ui.spacing().item_spacing.x).max(1.0);
+        ui.horizontal(|ui| {
+            if ui
+                .add_enabled_ui(zoom > *crate::canvas::THUMBNAIL_ZOOM_RANGE.start(), |ui| {
+                    icons::button(ui, "zoom-out", 26.0, false, tl!("Smaller thumbnails"))
+                })
+                .inner
+                .clicked()
+            {
+                zoom -= 0.25;
+            }
+            let mut percent = zoom * 100.0;
+            let range = (*crate::canvas::THUMBNAIL_ZOOM_RANGE.start() * 100.0)..=(*crate::canvas::THUMBNAIL_ZOOM_RANGE.end() * 100.0);
+            ui.scope(|ui| {
+                // The regular field fill blends into this panel; keep the slider's full rail visible.
+                ui.visuals_mut().widgets.inactive.bg_fill = t.border;
+                let slider = ui.add(egui::Slider::new(&mut percent, range).step_by(1.0).show_value(false).trailing_fill(true)).labelled_by(label.id);
+                slider.widget_info(|| egui::WidgetInfo::slider(ui.is_enabled(), f64::from(percent), tl!("Thumbnail size")));
+            });
+            zoom = percent / 100.0;
+            if ui
+                .add_enabled_ui(zoom < *crate::canvas::THUMBNAIL_ZOOM_RANGE.end(), |ui| {
+                    icons::button(ui, "zoom-in", 26.0, false, tl!("Larger thumbnails"))
+                })
+                .inner
+                .clicked()
+            {
+                zoom += 0.25;
+            }
+        });
+    });
+    if zoom != before {
+        view.set_thumbnail_zoom(zoom);
+    }
+    ui.add_space(6.0);
 }
 
 /// The page thumbnails. A click goes to the page; ⌘/Ctrl-click and ⇧-click pick several pages
@@ -1210,7 +1335,9 @@ fn pages(ui: &mut egui::Ui, t: &Tokens, info: &DocInfo, view: &mut crate::DocVie
     // scroll bar dragged by the user already wins over a scroll to a place in egui.
     let follow = view.panel_followed != Some(view.current) && view.panel_drag.is_none();
     view.panel_followed = Some(view.current);
-    let w = (ui.available_width() - 40.0).min(150.0);
+    let available = (ui.available_width() - 16.0).max(1.0);
+    let usual = (ui.available_width() - 40.0).clamp(1.0, 150.0);
+    let w = (usual * view.thumbnail_zoom()).min(available);
     let count = info.pages.len();
     let mut rows: Vec<Rect> = Vec::with_capacity(info.pages.len());
     let mut dropped = false;
@@ -1783,11 +1910,39 @@ mod label_column {
 
 #[cfg(test)]
 mod bookmark_filter {
-    use super::outline_matches;
+    use super::{outline_matches, title_format};
+    use crate::theme::{self, Tokens};
     use pdfcraft_render::OutlineItem;
 
+    /// #3193: a bookmark's title is drawn in its own style and colour.
+    #[test]
+    fn bookmark_titles_take_their_style_and_colour() {
+        let t = Tokens::for_kind(crate::theme::ThemeKind::Light);
+        let plain = item("Plain", Vec::new());
+        assert_eq!(title_format(&plain, 0, &t).font_id, theme::medium(13.0));
+        assert_eq!(title_format(&plain, 1, &t).font_id, theme::regular(13.0));
+        assert_eq!(title_format(&plain, 1, &t).color, t.text);
+        assert!(!title_format(&plain, 1, &t).italics);
+        let styled = OutlineItem { color: Some([1.0, 0.0, 0.0]), italic: true, bold: true, ..item("Styled", Vec::new()) };
+        let f = title_format(&styled, 1, &t);
+        assert_eq!(f.font_id, theme::semibold(13.0));
+        assert!(f.italics);
+        assert_eq!(f.color, egui::Color32::from_rgb(255, 0, 0));
+        let half = OutlineItem { color: Some([0.0, 0.5, 0.0]), ..item("Green", Vec::new()) };
+        assert_eq!(title_format(&half, 1, &t).color, egui::Color32::from_rgb(0, 128, 0));
+    }
+
     fn item(title: &str, children: Vec<OutlineItem>) -> OutlineItem {
-        OutlineItem { title: title.into(), page: Some(0), view: pdfcraft_render::DestView::Top, children, open: true }
+        OutlineItem {
+            title: title.into(),
+            page: Some(0),
+            view: pdfcraft_render::DestView::Top,
+            children,
+            open: true,
+            color: None,
+            italic: false,
+            bold: false,
+        }
     }
 
     /// Turkish dotted and dotless i match in any case, as in Find (#892).
