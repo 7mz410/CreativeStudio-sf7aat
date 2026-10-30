@@ -20,6 +20,13 @@ KEEP = ('the PdfCraft authors',)
 
 # Exact replacements, applied before the general rename (and kept idempotent: skipped once done).
 RTL_RULES = [
+    ('crates/engine/src/links.rs', 'label: "Join the ArtCraft Discord"', 'label: "Upstream Community on Discord"'),
+    ('crates/engine/src/links.rs', 'label: "PdfCraft web page"', 'label: "Creative Studio Website"'),
+    ('crates/engine/src/links.rs', 'label: "ArtCraft website"', 'label: "Creative Studio Project"'),
+    ('crates/engine/src/links.rs', 'pub const WEBSITE: &str = "https://getartcraft.com";', 'pub const WEBSITE: &str = "https://studio.creative.ps";'),
+    ('crates/engine/src/links.rs', 'pub const APP_PAGE: &str = "https://getartcraft.com/apps/pdfcraft";', 'pub const APP_PAGE: &str = "https://studio.creative.ps";'),
+    ('crates/engine/src/links.rs', 'pub const GITHUB: &str = "https://github.com/storytold/pdfcraft";', 'pub const GITHUB: &str = "https://github.com/7mz410/CreativeStudio-sf7aat";'),
+    ('crates/ui-egui/src/home.rs', 'tl!("Join the ArtCraft community")', '"Creative Studio"'),
     ('crates/ui-egui/tests/it/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.left() > 0.0''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.left() > 0.0'''),
     ('crates/ui-egui/tests/it/ui.rs', 'open.right() <= h.get_by_label("Discord").rect().left());', 'open.right() <= h.get_by_label("Keyboard shortcuts").rect().left());'),
     ('crates/ui-egui/tests/it/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.right() <= discord.left()''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.right() <= discord.left()'''),
