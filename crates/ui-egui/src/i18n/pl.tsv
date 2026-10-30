@@ -161,17 +161,17 @@
 	Previous page	Poprzednia strona
 	Current page — type a page number or label (such as iv) and press Enter	Bieżąca strona — wpisz numer lub etykietę strony (np. iv) i naciśnij Enter
 	Zoom — type a percentage and press Enter	Powiększenie — wpisz wartość procentową i naciśnij Enter
-	Welcome to sf7aat	Witamy w sf7aat
+	Welcome to PdfCraft	Witamy w PdfCraft
 	An open-source PDF workbench — local, private, and scriptable.	Otwarty zestaw narzędzi do PDF — lokalny, prywatny i obsługujący skrypty.
-	The upstream ArtCraft community	Dołącz do społeczności ArtCraft
+	Join the ArtCraft community	Dołącz do społeczności ArtCraft
 	Get help, share feedback and follow development on Discord.	Uzyskaj pomoc, podziel się opinią i śledź rozwój na Discordzie.
 	Recommended tools	Polecane narzędzia
 	Use now	Użyj teraz
 	Open file	Otwórz plik
 	Recent	Ostatnie
-	Files you open in sf7aat appear here. Drop a PDF anywhere to open it.	Pliki otwierane w sf7aat pojawiają się tutaj. Upuść PDF w dowolnym miejscu, aby go otworzyć.
+	Files you open in PdfCraft appear here. Drop a PDF anywhere to open it.	Pliki otwierane w PdfCraft pojawiają się tutaj. Upuść PDF w dowolnym miejscu, aby go otworzyć.
 	Privacy	Prywatność
-	sf7aat works offline. No telemetry, no account, and no cloud processing unless you add a provider.	sf7aat działa offline. Bez telemetrii, konta i przetwarzania w chmurze, chyba że dodasz dostawcę.
+	PdfCraft works offline. No telemetry, no account, and no cloud processing unless you add a provider.	PdfCraft działa offline. Bez telemetrii, konta i przetwarzania w chmurze, chyba że dodasz dostawcę.
 	Scripts run in a sandbox without file or network access. With JavaScript off, Acrobat's standard format, validate and calculate functions still work.	Skrypty działają w piaskownicy bez dostępu do plików i sieci. Przy wyłączonym JavaScript standardowe funkcje formatowania, walidacji i obliczeń Acrobata nadal działają.
 	Back to all tools	Wróć do wszystkich narzędzi
 	Close panel	Zamknij panel
@@ -180,6 +180,15 @@
 	Available	Dostępne
 	Ready	Gotowe
 	Search tools and commands…	Szukaj narzędzi i poleceń…
+
+# Accessible names for inputs that have no visible label.
+	Added text	Dodany tekst
+	Link URL	Adres URL łącza
+	Search tools and commands	Szukaj narzędzi i poleceń
+	Text editing line	Wiersz edycji tekstu
+	Text to place	Tekst do umieszczenia
+	Tooltip	Podpowiedź
+	Words or phrases to redact	Słowa lub frazy do utajenia
 	No matching tools	Brak pasujących narzędzi
 	Tool	Narzędzie
 	Command	Polecenie
@@ -308,12 +317,12 @@
 	Split document…	Podziel dokument…
 	Number pages…	Ponumeruj strony…
 	Keyboard shortcuts	Skróty klawiaturowe
-	Upstream Community on Discord	Dołącz do Discorda ArtCraft
-	Creative Studio Website	Strona internetowa sf7aat
-	sf7aat on GitHub	sf7aat na GitHubie
-	Creative Studio Project	Strona internetowa ArtCraft
+	Join the ArtCraft Discord	Dołącz do Discorda ArtCraft
+	PdfCraft web page	Strona internetowa PdfCraft
+	PdfCraft on GitHub	PdfCraft na GitHubie
+	ArtCraft website	Strona internetowa ArtCraft
 	Check for updates…	Sprawdź aktualizacje…
-	About sf7aat	O sf7aat
+	About PdfCraft	O PdfCraft
 	Export a PDF	Eksportuj PDF
 	Export to	Eksportuj do
 	Microsoft Word (.docx)	Microsoft Word (.docx)
@@ -606,6 +615,7 @@
 	Discard private data of other applications	Usuń prywatne dane innych aplikacji
 	Discard hidden text	Usuń ukryty tekst
 	Use Flate to encode streams that are not encoded	Zakoduj nieskompresowane strumienie metodą Flate
+	In streams that use LZW encoding, use Flate instead	Zakoduj strumienie LZW metodą Flate
 	Remove invalid links and bookmarks	Usuń nieprawidłowe łącza i zakładki
 	Remove unreferenced named destinations	Usuń nieużywane nazwane miejsca docelowe
 	Compress document structure (object streams)	Kompresuj strukturę dokumentu (strumienie obiektów)
@@ -800,9 +810,9 @@
 	Check for updates	Sprawdź aktualizacje
 	No check has run yet.	Nie sprawdzono jeszcze aktualizacji.
 	Checking for a newer version…	Sprawdzanie dostępności nowszej wersji…
-	sf7aat {v} is available.	sf7aat {v} jest dostępny.
+	PdfCraft {v} is available.	PdfCraft {v} jest dostępny.
 	You have version {c}. Download the new version from its release page.	Masz wersję {c}. Pobierz nową wersję ze strony wydania.
-	sf7aat {c} is up to date.	sf7aat {c} jest aktualny.
+	PdfCraft {c} is up to date.	PdfCraft {c} jest aktualny.
 	Couldn't check for updates: {e}	Nie można sprawdzić aktualizacji: {e}
 	You have version {c}. All releases are listed at {page}.	Masz wersję {c}. Wszystkie wydania są dostępne na {page}.
 	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	Sprawdza najnowsze wydanie na GitHubie. Nic nie jest pobierane ani instalowane automatycznie.
@@ -921,8 +931,8 @@
 	No changes allowed	Zmiany niedozwolone
 	Annotations, form fill-in, and digital signatures	Adnotacje, wypełnianie formularzy i podpisy cyfrowe
 	Form fill-in and digital signatures	Wypełnianie formularzy i podpisy cyfrowe
-	The key is in the macOS Keychain, which may ask to allow sf7aat to use it.	Klucz znajduje się w pęku kluczy macOS, który może poprosić o zgodę na jego użycie przez sf7aat.
-	The key is in the Windows certificate store, which may ask to allow sf7aat to use it.	Klucz znajduje się w magazynie certyfikatów Windows, który może poprosić o zgodę na jego użycie przez sf7aat.
+	The key is in the macOS Keychain, which may ask to allow PdfCraft to use it.	Klucz znajduje się w pęku kluczy macOS, który może poprosić o zgodę na jego użycie przez PdfCraft.
+	The key is in the Windows certificate store, which may ask to allow PdfCraft to use it.	Klucz znajduje się w magazynie certyfikatów Windows, który może poprosić o zgodę na jego użycie przez PdfCraft.
 	Digital ID password	Hasło identyfikatora cyfrowego
 	Back	Wstecz
 	Validate all	Zweryfikuj wszystkie
@@ -1276,7 +1286,7 @@
 	Downsample to	Zmniejsz rozdzielczość do
 	Also recognize pages that already have text	Rozpoznaj także strony, które zawierają już tekst
 	Pictures on those pages are recognized too; words already in the page's text are not added again	Obrazy na tych stronach też są rozpoznawane; słowa, które już są w tekście strony, nie są dodawane ponownie
-	Text recognition isn't installed: its model files are missing. Reinstall sf7aat, or set PDFCRAFT_MODELS to the folder that holds them.	Rozpoznawanie tekstu nie jest zainstalowane: brakuje plików modeli. Zainstaluj sf7aat ponownie lub ustaw PDFCRAFT_MODELS na folder zawierający te pliki.
+	Text recognition isn't installed: its model files are missing. Reinstall PdfCraft, or set PDFCRAFT_MODELS to the folder that holds them.	Rozpoznawanie tekstu nie jest zainstalowane: brakuje plików modeli. Zainstaluj PdfCraft ponownie lub ustaw PDFCRAFT_MODELS na folder zawierający te pliki.
 	Settings	Ustawienia
 	Optional	Opcjonalne
 	Planned · {m}	Planowane · {m}
@@ -1425,7 +1435,7 @@
 	Anyone opening the document will need this password. It's applied when you save.	Każda osoba otwierająca dokument będzie potrzebować tego hasła. Zostanie zastosowane przy zapisie.
 	The document opens without a password; this password is needed to change the restrictions. It's applied when you save.	Dokument otwiera się bez hasła; to hasło jest potrzebne do zmiany ograniczeń. Zostanie zastosowane przy zapisie.
 	Recover unsaved documents?	Odzyskać niezapisane dokumenty?
-	sf7aat didn't shut down normally. These documents had changes that were autosaved:	sf7aat nie został zamknięty prawidłowo. Automatycznie zapisano zmiany w tych dokumentach:
+	PdfCraft didn't shut down normally. These documents had changes that were autosaved:	PdfCraft nie został zamknięty prawidłowo. Automatycznie zapisano zmiany w tych dokumentach:
 	just now	przed chwilą
 	{n} min ago	{n} min temu
 	{n} h ago	{n} godz. temu
@@ -1584,10 +1594,10 @@
 	On the web, open or drop an image to convert it	W wersji internetowej otwórz lub upuść obraz, aby go przekonwertować
 	Couldn't optimize the file: {e}	Nie można zoptymalizować pliku: {e}
 	Couldn't write {path}: {e}	Nie można zapisać {path}: {e}
-	The form asks to be submitted to {u}; sf7aat doesn't send form data. Save the document to keep your entries.	Formularz wymaga wysłania do {u}; sf7aat nie wysyła danych formularza. Zapisz dokument, aby zachować wpisane dane.
+	The form asks to be submitted to {u}; PdfCraft doesn't send form data. Save the document to keep your entries.	Formularz wymaga wysłania do {u}; PdfCraft nie wysyła danych formularza. Zapisz dokument, aby zachować wpisane dane.
 	This PDF uses the unsupported {s} action.	Ten PDF używa nieobsługiwanej akcji {s}.
 	{name}: the {other} action isn't supported yet	{name}: akcja {other} nie jest jeszcze obsługiwana
-	{name} submits the form to {url}; sf7aat doesn't send form data. Save the document to keep your entries.	{name} wysyła formularz do {url}; sf7aat nie wysyła danych formularza. Zapisz dokument, aby zachować wpisane dane.
+	{name} submits the form to {url}; PdfCraft doesn't send form data. Save the document to keep your entries.	{name} wysyła formularz do {url}; PdfCraft nie wysyła danych formularza. Zapisz dokument, aby zachować wpisane dane.
 	Export stopped: {e}	Eksport zatrzymany: {e}
 	Exported 1 image	Wyeksportowano 1 obraz
 	Exported {n} images	Liczba wyeksportowanych obrazów: {n}
@@ -1753,7 +1763,7 @@
 	Couldn't open {name}: {e}	Nie można otworzyć {name}: {e}
 	Couldn't read {name}: {e}	Nie można odczytać {name}: {e}
 	Portable mode is off: {folder} can't be written ({error}). Settings are kept in your user folder instead.	Tryb przenośny jest wyłączony: nie można zapisywać w {folder} ({error}). Ustawienia są przechowywane w folderze użytkownika.
-	sf7aat is drawing without a graphics processor, so it may be slow. Updating the graphics driver may help.	sf7aat renderuje bez procesora graficznego, więc może działać wolno. Aktualizacja sterownika graficznego może pomóc.
+	PdfCraft is drawing without a graphics processor, so it may be slow. Updating the graphics driver may help.	PdfCraft renderuje bez procesora graficznego, więc może działać wolno. Aktualizacja sterownika graficznego może pomóc.
 	Couldn't save: {e}	Nie można zapisać: {e}
 	Downloading attachments on the web arrives with M3.10 ({n} bytes ready)	Pobieranie załączników w wersji internetowej będzie dostępne w M3.10 (gotowe bajty: {n})
 	`{command}` {when}	`{command}` {when}
@@ -1827,7 +1837,7 @@
 	Signed and all signatures are valid.	Dokument jest podpisany i wszystkie podpisy są prawidłowe.
 	At least one signature has problems.	Co najmniej jeden podpis ma problemy.
 	This document is secured. Some changes are restricted by its security settings.	Ten dokument jest zabezpieczony. Niektóre zmiany są ograniczone ustawieniami zabezpieczeń.
-	This is a dynamic XFA form, which sf7aat can't display yet. What you see is the file's placeholder page.	To dynamiczny formularz XFA, którego sf7aat nie potrafi jeszcze wyświetlić. Widzisz stronę zastępczą pliku.
+	This is a dynamic XFA form, which PdfCraft can't display yet. What you see is the file's placeholder page.	To dynamiczny formularz XFA, którego PdfCraft nie potrafi jeszcze wyświetlić. Widzisz stronę zastępczą pliku.
 	This form also contains XFA data, which PdfCraft doesn't read yet. You can fill its fields, but Acrobat may show the XFA values instead.	Ten formularz zawiera również dane XFA, których PdfCraft jeszcze nie odczytuje. Możesz wypełniać jego pola, ale Acrobat może zamiast nich wyświetlać wartości XFA.
 	This document contains {n} interactive form fields.	Ten dokument zawiera interaktywne pola formularza w liczbie {n}.
 	This file was damaged and has been repaired. Saving keeps the repaired version.	Ten plik był uszkodzony i został naprawiony. Zapis zachowa naprawioną wersję.
@@ -2034,6 +2044,10 @@
 	Perimeter	Obwód
 	Area	Pole powierzchni
 	Drawing scale	Skala rysunku
+	Scale	Skala
+	Common scales	Popularne skale
+	Enter a scale such as 1:50.	Wpisz skalę, na przykład 1:50.
+	Applying a scale switches units to m / mm.	Zastosowanie skali zmienia jednostki na m / mm.
 	Snapping	Przyciąganie
 	Export measurements	Eksportuj pomiary
 	Open a PDF to measure it.	Otwórz PDF, aby wykonać pomiar.
@@ -2084,11 +2098,12 @@
 	Choose a PNG or JPEG image (up to 4 MiB). Transparency is preserved.	Wybierz obraz PNG lub JPEG (do 4 MiB). Przezroczystość zostanie zachowana.
 	Couldn't import the signature image: {e}	Nie można zaimportować obrazu podpisu: {e}
 	Go to page…	Przejdź do strony…
-	Reopen the files that were open when sf7aat last closed	Otwórz ponownie pliki otwarte przy ostatnim zamknięciu sf7aat
+	Reopen the files that were open when PdfCraft last closed	Otwórz ponownie pliki otwarte przy ostatnim zamknięciu PdfCraft
+	Restore the last view (page, zoom and page display) when a document is opened again	Przywracaj ostatni widok (stronę, powiększenie i układ stron) przy ponownym otwarciu dokumentu
 	The PDF text fonts can't draw “{c}” ({code}). Choose supported text.	Czcionki tekstu PDF nie obsługują znaku „{c}” ({code}). Wybierz obsługiwany tekst.
 	The standard fonts can't draw “{c}” ({code}). Only Western European characters can be added as text for now.	Standardowe czcionki nie obsługują znaku „{c}” ({code}). Na razie można dodawać tylko tekst ze znakami zachodnioeuropejskimi.
-	This field's font can't draw “{c}” ({code}), so sf7aat shows ? in its place. The value is saved, and other PDF viewers redraw the field from it.	Czcionka tego pola nie obsługuje znaku „{c}” ({code}), więc sf7aat wyświetla w jego miejscu ?. Wartość została zapisana, a inne przeglądarki PDF odrysują pole na jej podstawie.
-	The fonts sf7aat writes with can't draw “{c}” ({code}), so it shows as ? in every PDF viewer. The text is saved.	Czcionki, którymi pisze sf7aat, nie obsługują znaku „{c}” ({code}), więc w każdej przeglądarce PDF w jego miejscu widać ?. Tekst został zapisany.
+	This field's font can't draw “{c}” ({code}), so PdfCraft shows ? in its place. The value is saved, and other PDF viewers redraw the field from it.	Czcionka tego pola nie obsługuje znaku „{c}” ({code}), więc PdfCraft wyświetla w jego miejscu ?. Wartość została zapisana, a inne przeglądarki PDF odrysują pole na jej podstawie.
+	The fonts PdfCraft writes with can't draw “{c}” ({code}), so it shows as ? in every PDF viewer. The text is saved.	Czcionki, którymi pisze PdfCraft, nie obsługują znaku „{c}” ({code}), więc w każdej przeglądarce PDF w jego miejscu widać ?. Tekst został zapisany.
 	Open arrow	Otwarta strzałka
 	Closed arrow	Zamknięta strzałka
 	Butt	Poprzeczna kreska
@@ -2206,8 +2221,8 @@
 	Write this email?	Napisać tę wiadomość e-mail?
 	XFA form: its fields and its XFA data are kept in step, so other viewers show what you fill in.	Formularz XFA: pola i dane XFA są synchronizowane, aby inne przeglądarki wyświetlały wpisane wartości.
 	{n} contributors · {c} commits	Współtwórców: {n} · Commitów: {c}
-	{who} in this document tried to open an address sf7aat won't open: {e}.	Element „{who}” w tym dokumencie próbował otworzyć adres, którego sf7aat nie otworzy: {e}.
-	{who} in this document tried to open an address sf7aat won't open: {e}. Only web (http, https) and email (mailto) links open from documents.	Element „{who}” w tym dokumencie próbował otworzyć adres, którego sf7aat nie otworzy: {e}. Z dokumentów otwierane są tylko łącza internetowe (http, https) i pocztowe (mailto).
+	{who} in this document tried to open an address PdfCraft won't open: {e}.	Element „{who}” w tym dokumencie próbował otworzyć adres, którego PdfCraft nie otworzy: {e}.
+	{who} in this document tried to open an address PdfCraft won't open: {e}. Only web (http, https) and email (mailto) links open from documents.	Element „{who}” w tym dokumencie próbował otworzyć adres, którego PdfCraft nie otworzy: {e}. Z dokumentów otwierane są tylko łącza internetowe (http, https) i pocztowe (mailto).
 	{who} in this document wants to open this address in your browser:	Element „{who}” w tym dokumencie chce otworzyć ten adres w przeglądarce:
 	{who} in this document wants to open your email app with this address:	Element „{who}” w tym dokumencie chce otworzyć aplikację pocztową z tym adresem:
 	ΔLOC	ΔLOC
@@ -2299,6 +2314,8 @@ key	Space	Spacja
 	These objects could not be moved. Select them again and try a smaller move.	Nie udało się przenieść tych obiektów. Zaznacz je ponownie i spróbuj mniejszego przesunięcia.
 	This page contains objects that cannot be selected together.	Ta strona zawiera obiekty, których nie można zaznaczyć razem.
 	Reload documents when their files change on disk	Wczytuj ponownie dokumenty, gdy ich pliki zmienią się na dysku
+	Don't show again	Nie pokazuj ponownie
+	Show a notice when a document is secured	Pokazuj powiadomienie, gdy dokument jest zabezpieczony
 	Always use my default zoom and page layout	Zawsze używaj mojego domyślnego powiększenia i układu stron
 	This file changed on disk. Reload shows the new version and drops your unsaved changes; Save replaces it with this version.	Ten plik zmienił się na dysku. Wczytaj ponownie pokazuje nową wersję i odrzuca niezapisane zmiany; Zapisz zastępuje ją tą wersją.
 	Reload	Wczytaj ponownie
@@ -2357,7 +2374,7 @@ animation effects	Off	Wyłączone
 @plural	{n} more field calculates too early.|{n} more fields calculate too early.	Jeszcze {n} pole jest obliczane za wcześnie.|Jeszcze {n} pola są obliczane za wcześnie.|Jeszcze {n} pól jest obliczanych za wcześnie.
 @plural	{fields} is missing from the order saved in the PDF, so other PDF viewers may not calculate it.|{fields} are missing from the order saved in the PDF, so other PDF viewers may not calculate them.	W kolejności zapisanej w pliku PDF brakuje {fields}, więc inne przeglądarki PDF mogą go nie obliczać.|W kolejności zapisanej w pliku PDF brakuje {fields}, więc inne przeglądarki PDF mogą ich nie obliczać.|W kolejności zapisanej w pliku PDF brakuje {fields}, więc inne przeglądarki PDF mogą ich nie obliczać.
 	Scan	Skanuj
-	Sign a sheet of white paper and take a photo of it in bright, even light (use the flash). Choose the photo or drop it here: sf7aat finds the signature and removes the paper.	Podpisz się na białej kartce i zrób jej zdjęcie przy jasnym, równomiernym świetle (użyj lampy błyskowej). Wybierz zdjęcie lub upuść je tutaj: sf7aat znajdzie podpis i usunie papier.
+	Sign a sheet of white paper and take a photo of it in bright, even light (use the flash). Choose the photo or drop it here: PdfCraft finds the signature and removes the paper.	Podpisz się na białej kartce i zrób jej zdjęcie przy jasnym, równomiernym świetle (użyj lampy błyskowej). Wybierz zdjęcie lub upuść je tutaj: PdfCraft znajdzie podpis i usunie papier.
 	Choose photo…	Wybierz zdjęcie…
 	No photo chosen	Nie wybrano zdjęcia
 	Photo	Zdjęcie
@@ -2457,6 +2474,19 @@ animation effects	Off	Wyłączone
 	Make properties default	Ustaw właściwości jako domyślne
 	Pages selected	Zaznaczone strony
 	Page properties	Właściwości strony
+	Create & Edit	Tworzenie i edycja
+	Review & Compare	Recenzja i porównanie
+	Forms & Signatures	Formularze i podpisy
+	Protect & Standardize	Ochrona i standaryzacja
+	Customize & Automate	Dostosowanie i automatyzacja
+	No tools match your search.	Żadne narzędzie nie pasuje do wyszukiwania.
+	Expand all tools	Rozwiń wszystkie narzędzia
+	Collapse all tools	Zwiń wszystkie narzędzia
+	Attach a file…	Dołącz plik…
+	Delete attachment	Usuń załącznik
+	Attaching files is not available on the web yet	Dołączanie plików nie jest jeszcze dostępne w wersji webowej
+	Attach {name}	Dołącz {name}
+	Delete attachment {key}	Usuń załącznik {key}
 	Font	Czcionka
 	Bulleted list	Lista punktowana
 	Numbered list	Lista numerowana
@@ -2611,3 +2641,15 @@ animation effects	Off	Wyłączone
 	field names can't contain a period: {name}	nazwy pól nie mogą zawierać kropki: {name}
 	two cells would both be named {name}	dwie komórki miałyby nazwę {name}
 	a field named {name} already exists	pole o nazwie {name} już istnieje
+
+# Date picker: Today button (#4274) (AI-assisted, not separately native-reviewed)
+	Today	Dzisiaj
+@plural	{n} reply|{n} replies	{n} odpowiedź|{n} odpowiedzi|{n} odpowiedzi
+
+# Pages panel: the Page tools menu (#4415) (AI-assisted, not separately native-reviewed)
+	Page tools	Narzędzia stron
+	Insert pages from a file after the selection…	Wstaw strony z pliku po zaznaczeniu…
+	Rotate the selected pages counterclockwise	Obróć zaznaczone strony w lewo
+	Rotate the selected pages clockwise	Obróć zaznaczone strony w prawo
+	Extract the selected pages…	Wyodrębnij zaznaczone strony…
+	Delete the selected pages	Usuń zaznaczone strony

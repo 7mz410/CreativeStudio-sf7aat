@@ -126,17 +126,17 @@
 	Previous page	Алдыңғы бет
 	Current page — type a page number or label (such as iv) and press Enter	Ағымдағы бет — бет нөмірін немесе белгісін (мысалы, iv) теріңіз де, Enter пернесін басыңыз
 	Zoom — type a percentage and press Enter	Масштаб — пайызды енгізіп, Enter пернесін басыңыз
-	Welcome to sf7aat	sf7aat-ге қош келдіңіз
+	Welcome to PdfCraft	PdfCraft-ге қош келдіңіз
 	An open-source PDF workbench — local, private, and scriptable.	Ашық бастапқы кодты PDF жұмыс орны — жергілікті, жеке әрі скрипттерді қолдайтын.
-	The upstream ArtCraft community	ArtCraft қауымдастығына қосылыңыз
+	Join the ArtCraft community	ArtCraft қауымдастығына қосылыңыз
 	Get help, share feedback and follow development on Discord.	Көмек алыңыз, пікір бөлісіңіз және Discord-тағы әзірлеуді қадағалаңыз.
 	Recommended tools	Ұсынылған құралдар
 	Use now	Дәл қазір пайдалану
 	Open file	Файлды ашу
 	Recent	Соңғы
-	Files you open in sf7aat appear here. Drop a PDF anywhere to open it.	sf7aat-те ашқан файлдарыңыз осында көрсетіледі. PDF файлын ашу үшін оны кез келген жерге апарып тастаңыз.
+	Files you open in PdfCraft appear here. Drop a PDF anywhere to open it.	PdfCraft-те ашқан файлдарыңыз осында көрсетіледі. PDF файлын ашу үшін оны кез келген жерге апарып тастаңыз.
 	Privacy	Жекелік
-	sf7aat works offline. No telemetry, no account, and no cloud processing unless you add a provider.	sf7aat офлайн жұмыс істейді. Провайдер қоспағаныңызша телеметрия да, тіркелгі де, бұлтта өңдеу де жоқ.
+	PdfCraft works offline. No telemetry, no account, and no cloud processing unless you add a provider.	PdfCraft офлайн жұмыс істейді. Провайдер қоспағаныңызша телеметрия да, тіркелгі де, бұлтта өңдеу де жоқ.
 	Scripts run in a sandbox without file or network access. With JavaScript off, Acrobat's standard format, validate and calculate functions still work.	Скрипттер файлға да, желіге де қатынасы жоқ құмсалғышта орындалады. JavaScript өшірулі тұрса да, Acrobat-тың стандартты пішімдеу, тексеру және есептеу функциялары әлі де жұмыс істейді.
 	Back to all tools	Барлық құралдарға оралу
 	Close panel	Панельді жабу
@@ -145,6 +145,15 @@
 	Available	Қолжетімді
 	Ready	Дайын
 	Search tools and commands…	Құралдар мен командаларды іздеу…
+
+# Accessible names for inputs that have no visible label.
+	Added text	Қосылған мәтін
+	Link URL	Сілтеменің URL мекенжайы
+	Search tools and commands	Құралдар мен командаларды іздеу
+	Text editing line	Мәтінді өңдеу жолы
+	Text to place	Орналастырылатын мәтін
+	Tooltip	Қалтқы
+	Words or phrases to redact	Жасырылатын сөздер немесе сөз тіркестері
 	No matching tools	Сәйкес құралдар жоқ
 	Tool	Құрал
 	Command	Команда
@@ -273,12 +282,12 @@
 	Split document…	Құжатты бөлу…
 	Number pages…	Беттерді нөмірлеу…
 	Keyboard shortcuts	Пернетақта тіркесімдері
-	Upstream Community on Discord	ArtCraft Discord-ына қосылыңыз
-	Creative Studio Website	sf7aat веб-сайты
-	sf7aat on GitHub	GitHub-тағы sf7aat
-	Creative Studio Project	ArtCraft веб-сайты
+	Join the ArtCraft Discord	ArtCraft Discord-ына қосылыңыз
+	PdfCraft web page	PdfCraft веб-сайты
+	PdfCraft on GitHub	GitHub-тағы PdfCraft
+	ArtCraft website	ArtCraft веб-сайты
 	Check for updates…	Жаңартуларды тексеру…
-	About sf7aat	sf7aat туралы
+	About PdfCraft	PdfCraft туралы
 	Export a PDF	PDF экспорттау
 	Export to	Мынаған экспорттау
 	Microsoft Word (.docx)	Microsoft Word (.docx)
@@ -571,6 +580,7 @@
 	Discard private data of other applications	Басқа қосымшалардың жеке деректерін алып тастау
 	Discard hidden text	Жасырын мәтінді алып тастау
 	Use Flate to encode streams that are not encoded	Кодталмаған ағындарды Flate көмегімен кодтау
+	In streams that use LZW encoding, use Flate instead	LZW кодталған ағындарда оның орнына Flate қолдану
 	Remove invalid links and bookmarks	Жарамсыз сілтемелерді және бетбелгілерді алып тастау
 	Remove unreferenced named destinations	Сілтеме берілмеген атаулы межелерді алып тастау
 	Compress document structure (object streams)	Құжат құрылымын сығу (нысан ағындары)
@@ -764,9 +774,9 @@
 	Check for updates	Жаңартуларды тексеру
 	No check has run yet.	Тексеру әлі жүргізілген жоқ.
 	Checking for a newer version…	Жаңа нұсқа бар ма екені тексерілуде…
-	sf7aat {v} is available.	sf7aat {v} қолжетімді.
+	PdfCraft {v} is available.	PdfCraft {v} қолжетімді.
 	You have version {c}. Download the new version from its release page.	Сізде {c} нұсқасы бар. Жаңа нұсқаны шығарылым бетінен жүктеп алыңыз.
-	sf7aat {c} is up to date.	sf7aat {c} нұсқасы ең соңғы.
+	PdfCraft {c} is up to date.	PdfCraft {c} нұсқасы ең соңғы.
 	Couldn't check for updates: {e}	Жаңартуларды тексеру мүмкін болмады: {e}
 	You have version {c}. All releases are listed at {page}.	Сізде {c} нұсқасы бар. Барлық шығарылымдар {page} бетінде көрсетілген.
 	Asks GitHub for the latest release. Nothing is downloaded or installed automatically.	GitHub-тан соңғы шығарылымды сұрайды. Ештеңе автоматты түрде жүктелмейді немесе орнатылмайды.
@@ -882,8 +892,8 @@
 	No changes allowed	Ешқандай өзгеріс рұқсат етілмейді
 	Annotations, form fill-in, and digital signatures	Белгілеулер, форманы толтыру және цифрлық қолтаңбалар
 	Form fill-in and digital signatures	Форманы толтыру және цифрлық қолтаңбалар
-	The key is in the macOS Keychain, which may ask to allow sf7aat to use it.	Кілт macOS Keychain ішінде; ол sf7aat-ге оны пайдалануға рұқсат сұрауы мүмкін.
-	The key is in the Windows certificate store, which may ask to allow sf7aat to use it.	Кілт Windows сертификаттар қоймасында; ол sf7aat-ге оны пайдалануға рұқсат сұрауы мүмкін.
+	The key is in the macOS Keychain, which may ask to allow PdfCraft to use it.	Кілт macOS Keychain ішінде; ол PdfCraft-ге оны пайдалануға рұқсат сұрауы мүмкін.
+	The key is in the Windows certificate store, which may ask to allow PdfCraft to use it.	Кілт Windows сертификаттар қоймасында; ол PdfCraft-ге оны пайдалануға рұқсат сұрауы мүмкін.
 	Digital ID password	Цифрлық ID құпиясөзі
 	Back	Артқа
 	Validate all	Барлығын тексеру
@@ -1380,7 +1390,7 @@
 	Anyone opening the document will need this password. It's applied when you save.	Құжатты ашатын кез келген адамға осы құпиясөз қажет болады. Ол сақтау кезінде қолданылады.
 	The document opens without a password; this password is needed to change the restrictions. It's applied when you save.	Құжат құпиясөзсіз ашылады; шектеулерді өзгерту үшін осы құпиясөз керек. Ол сақтау кезінде қолданылады.
 	Recover unsaved documents?	Сақталмаған құжаттарды қалпына келтіру керек пе?
-	sf7aat didn't shut down normally. These documents had changes that were autosaved:	sf7aat қалыпты жабылмады. Осы құжаттардың өзгерістері автосақталды:
+	PdfCraft didn't shut down normally. These documents had changes that were autosaved:	PdfCraft қалыпты жабылмады. Осы құжаттардың өзгерістері автосақталды:
 	just now	жаңа ғана
 	{n} min ago	{n} минут бұрын
 	{n} h ago	{n} сағат бұрын
@@ -1539,10 +1549,10 @@
 	On the web, open or drop an image to convert it	Веб-нұсқада түрлендіру үшін суретті ашыңыз немесе сүйреп әкеліп тастаңыз
 	Couldn't optimize the file: {e}	Файлды оңтайландыру мүмкін болмады: {e}
 	Couldn't write {path}: {e}	{path} жолына жазу мүмкін болмады: {e}
-	The form asks to be submitted to {u}; sf7aat doesn't send form data. Save the document to keep your entries.	Форма {u} адресіне жіберілуді сұрайды; sf7aat форма деректерін жібермейді. Енгізген деректеріңізді сақтап қалу үшін құжатты сақтаңыз.
+	The form asks to be submitted to {u}; PdfCraft doesn't send form data. Save the document to keep your entries.	Форма {u} адресіне жіберілуді сұрайды; PdfCraft форма деректерін жібермейді. Енгізген деректеріңізді сақтап қалу үшін құжатты сақтаңыз.
 	This PDF uses the unsupported {s} action.	Бұл PDF қолдау көрсетілмейтін {s} әрекетін пайдаланады.
 	{name}: the {other} action isn't supported yet	{name}: {other} әрекеті әлі қолдау көрсетілмейді
-	{name} submits the form to {url}; sf7aat doesn't send form data. Save the document to keep your entries.	{name} форманы {url} адресіне жібереді; sf7aat форма деректерін жібермейді. Енгізген деректеріңізді сақтап қалу үшін құжатты сақтаңыз.
+	{name} submits the form to {url}; PdfCraft doesn't send form data. Save the document to keep your entries.	{name} форманы {url} адресіне жібереді; PdfCraft форма деректерін жібермейді. Енгізген деректеріңізді сақтап қалу үшін құжатты сақтаңыз.
 	Export stopped: {e}	Экспорт тоқтатылды: {e}
 	Exported 1 image	1 сурет экспортталды
 	Exported {n} images	{n} сурет экспортталды
@@ -1756,7 +1766,7 @@
 	Signed and all signatures are valid.	Қол қойылды, барлық қолтаңбалар жарамды.
 	At least one signature has problems.	Кемінде бір қолтаңбада мәселелер бар.
 	This document is secured. Some changes are restricted by its security settings.	Бұл құжат қорғалған. Кейбір өзгерістер оның қауіпсіздік параметрлерімен шектеулі.
-	This is a dynamic XFA form, which sf7aat can't display yet. What you see is the file's placeholder page.	Бұл динамикалық XFA формасы, оны sf7aat әлі көрсете алмайды. Көріп тұрғаныңыз — файлдың орынбасар беті.
+	This is a dynamic XFA form, which PdfCraft can't display yet. What you see is the file's placeholder page.	Бұл динамикалық XFA формасы, оны PdfCraft әлі көрсете алмайды. Көріп тұрғаныңыз — файлдың орынбасар беті.
 	This form also contains XFA data, which PdfCraft doesn't read yet. You can fill its fields, but Acrobat may show the XFA values instead.	Бұл формада PdfCraft әлі оқымайтын XFA деректері де бар. Өрістерін толтыра аласыз, бірақ Acrobat орнына XFA мәндерін көрсетуі мүмкін.
 	This document contains {n} interactive form fields.	Бұл құжат {n} интерактивті форма өрісін қамтиды.
 	This file was damaged and has been repaired. Saving keeps the repaired version.	Бұл файл зақымдалған еді және жөнделді. Сақтау кезінде жөнделген нұсқа сақталады.
@@ -1962,6 +1972,10 @@
 	Perimeter	Периметр
 	Area	Аудан
 	Drawing scale	Сызба масштабы
+	Scale	Масштаб
+	Common scales	Жиі қолданылатын масштабтар
+	Enter a scale such as 1:50.	1:50 сияқты масштабты енгізіңіз.
+	Applying a scale switches units to m / mm.	Масштабты қолдану өлшем бірліктерін m / mm етіп ауыстырады.
 	Snapping	Түйістіру
 	Export measurements	Өлшемдерді экспорттау
 	Open a PDF to measure it.	Өлшеу үшін PDF құжатын ашыңыз.
@@ -2112,7 +2126,8 @@ calendar date	September	Қыркүйек
 calendar date	October	Қазан
 calendar date	November	Қараша
 calendar date	December	Желтоқсан
-	Reopen the files that were open when sf7aat last closed	sf7aat соңғы рет жабылғанда ашық болған файлдарды қайта ашу
+	Reopen the files that were open when PdfCraft last closed	PdfCraft соңғы рет жабылғанда ашық болған файлдарды қайта ашу
+	Restore the last view (page, zoom and page display) when a document is opened again	Құжат қайта ашылғанда соңғы көріністі (бет, масштаб және бет көрсетілімі) қалпына келтіру
 	Clear Recent Files	Соңғы файлдарды тазарту
 	Remove from Recent	Соңғылардан алып тастау
 	Remove {name} from Recent	{name} дегенді соңғылардан алып тастау
@@ -2124,8 +2139,8 @@ calendar date	December	Желтоқсан
 	A link	Сілтеме
 	A button	Түйме
 	A script	Сценарий
-	{who} in this document tried to open an address sf7aat won't open: {e}.	Осы құжаттағы {who} sf7aat ашпайтын адресті ашпақ болды: {e}.
-	{who} in this document tried to open an address sf7aat won't open: {e}. Only web (http, https) and email (mailto) links open from documents.	Осы құжаттағы {who} sf7aat ашпайтын адресті ашпақ болды: {e}. Құжаттардан тек веб (http, https) және email (mailto) сілтемелері ашылады.
+	{who} in this document tried to open an address PdfCraft won't open: {e}.	Осы құжаттағы {who} PdfCraft ашпайтын адресті ашпақ болды: {e}.
+	{who} in this document tried to open an address PdfCraft won't open: {e}. Only web (http, https) and email (mailto) links open from documents.	Осы құжаттағы {who} PdfCraft ашпайтын адресті ашпақ болды: {e}. Құжаттардан тек веб (http, https) және email (mailto) сілтемелері ашылады.
 	Another file dialog is still open. Finish with it first.	Басқа файл сұхбат терезесі әлі ашық тұр. Алдымен оны аяқтаңыз.
 	Couldn't show the file picker. Please try again.	Файл таңдау терезесін көрсету мүмкін болмады. Қайталап көріңіз.
 	The document changed while you were choosing a file, so nothing was changed.	Сіз файл таңдап жатқанда құжат өзгергендіктен, ешнәрсе өзгертілген жоқ.
@@ -2212,7 +2227,7 @@ calendar date	December	Желтоқсан
 	Open a PDF ({key})	PDF ашу ({key})
 	Open arrow	Ашық көрсеткі
 	Pages: {k} of {n}	Беттер: {k}, барлығы {n}
-	sf7aat is drawing without a graphics processor, so it may be slow. Updating the graphics driver may help.	sf7aat графикалық процессорсыз сурет салуда, сондықтан баяу жұмыс істеуі мүмкін. Графикалық драйверді жаңарту көмектесуі мүмкін.
+	PdfCraft is drawing without a graphics processor, so it may be slow. Updating the graphics driver may help.	PdfCraft графикалық процессорсыз сурет салуда, сондықтан баяу жұмыс істеуі мүмкін. Графикалық драйверді жаңарту көмектесуі мүмкін.
 	Preview unavailable: {e}	Алдын ала көру қолжетімсіз: {e}
 	Previous ({key})	Алдыңғы ({key})
 	Print ({key})	Басып шығару ({key})
@@ -2232,7 +2247,7 @@ calendar date	December	Желтоқсан
 	Slash	Қиғаш сызық
 	Some bookmarks are not shown here: the panel lists a limited number, nested a limited depth.	Кейбір бетбелгілер осында көрсетілмеген: панель шектеулі санды, шектеулі тереңдікке дейін ғана тізеді.
 	Switch to List view to change the pages it takes.	Қамтитын беттерін өзгерту үшін Тізім көрінісіне ауысыңыз.
-	Text recognition isn't installed: its model files are missing. Reinstall sf7aat, or set PDFCRAFT_MODELS to the folder that holds them.	Мәтінді тану орнатылмаған: модель файлдары жоқ. sf7aat қайта орнатыңыз немесе PDFCRAFT_MODELS айнымалысына олар жатқан қалтаны көрсетіңіз.
+	Text recognition isn't installed: its model files are missing. Reinstall PdfCraft, or set PDFCRAFT_MODELS to the folder that holds them.	Мәтінді тану орнатылмаған: модель файлдары жоқ. PdfCraft қайта орнатыңыз немесе PDFCRAFT_MODELS айнымалысына олар жатқан қалтаны көрсетіңіз.
 	Text used as a clipping path cannot be moved with this selection.	Қиып алу жолы ретінде қолданылатын мәтін бұл таңдаумен жылжытылмайды.
 	The document changed while you were editing field properties.	Өріс сипаттарын түзетіп жүргенде құжат өзгерді.
 	The document is no longer open.	Құжат енді ашық емес.
@@ -2318,6 +2333,8 @@ key	Space	Бос орын
 	Printer paper and scaling may differ. Check driver settings.	Принтер қағазы мен масштабы өзгеше болуы мүмкін. Драйвер параметрлерін тексеріңіз.
 	Drawing scale changes. Use Actual size for full-scale plans.	Сызба масштабы өзгереді. Толық масштабты жоспарлар үшін Нақты өлшемді пайдаланыңыз.
 	Reload documents when their files change on disk	Дискідегі файлдары өзгергенде құжаттарды қайта жүктеу
+	Don't show again	Қайта көрсетпеу
+	Show a notice when a document is secured	Құжат қорғалған кезде хабарландыру көрсету
 	Always use my default zoom and page layout	Әрқашан әдепкі масштаб пен бет орналасуын пайдалану
 	This file changed on disk. Reload shows the new version and drops your unsaved changes; Save replaces it with this version.	Бұл файл дискіде өзгертілді. «Қайта жүктеу» жаңа нұсқаны көрсетіп, сақталмаған өзгерістеріңізді тастайды; «Сақтау» оны осы нұсқамен алмастырады.
 	Reload	Қайта жүктеу
@@ -2339,8 +2356,8 @@ animation effects	Off	Өшірулі
 	Greyscale	Сұр реңктер
 	Black and white	Ақ-қара
 	This printer's driver doesn't take two-sided settings from other programs, so its own setting applies. Change it in Properties…	Бұл принтердің драйвері басқа бағдарламалардан екі жақты басып шығару баптауларын қабылдамайды, сондықтан өз баптауы қолданылады. Оны мына жерден өзгертіңіз: Сипаттар…
-	This field's font can't draw “{c}” ({code}), so sf7aat shows ? in its place. The value is saved, and other PDF viewers redraw the field from it.	Бұл өрістің қаріпі «{c}» ({code}) таңбасын сала алмайды, сондықтан sf7aat оның орнына ? көрсетеді. Мән сақталады, ал басқа PDF қарау құралдары өрісті соған қарап қайта салады.
-	The fonts sf7aat writes with can't draw “{c}” ({code}), so it shows as ? in every PDF viewer. The text is saved.	sf7aat жазатын қаріптер «{c}» ({code}) таңбасын сала алмайды, сондықтан ол барлық PDF қарау құралдарында ? болып көрінеді. Мәтін сақталады.
+	This field's font can't draw “{c}” ({code}), so PdfCraft shows ? in its place. The value is saved, and other PDF viewers redraw the field from it.	Бұл өрістің қаріпі «{c}» ({code}) таңбасын сала алмайды, сондықтан PdfCraft оның орнына ? көрсетеді. Мән сақталады, ал басқа PDF қарау құралдары өрісті соған қарап қайта салады.
+	The fonts PdfCraft writes with can't draw “{c}” ({code}), so it shows as ? in every PDF viewer. The text is saved.	PdfCraft жазатын қаріптер «{c}» ({code}) таңбасын сала алмайды, сондықтан ол барлық PDF қарау құралдарында ? болып көрінеді. Мәтін сақталады.
 	Browser's print dialog	Браузердің басып шығару терезесі
 	Copies, two-sided printing and colour are chosen in the browser's print dialog.	Көшірмелер саны, екі жақты басып шығару және түс браузердің басып шығару терезесінде таңдалады.
 	Preparing {n} sheets for printing…	Басып шығаруға парақтар дайындалуда: {n}…
@@ -2377,7 +2394,7 @@ animation effects	Off	Өшірулі
 @plural	{fields} is missing from the order saved in the PDF, so other PDF viewers may not calculate it.|{fields} are missing from the order saved in the PDF, so other PDF viewers may not calculate them.	{fields} PDF-те сақталған ретте жоқ, сондықтан басқа PDF қаралымдары оны есептемеуі мүмкін.|{fields} PDF-те сақталған ретте жоқ, сондықтан басқа PDF қаралымдары оларды есептемеуі мүмкін.
 @plural	{n} field name collides with earlier files and will be renamed: {list}|{n} field names collide with earlier files and will be renamed: {list}	{n} өріс атауы алдыңғы файлдармен қайшы келеді және қайта аталады: {list}|{n} өріс атауы алдыңғы файлдармен қайшы келеді және қайта аталады: {list}
 	Scan	Сканерлеу
-	Sign a sheet of white paper and take a photo of it in bright, even light (use the flash). Choose the photo or drop it here: sf7aat finds the signature and removes the paper.	Ақ қағаз парағына қол қойып, оны жарық әрі біркелкі жарықта суретке түсіріңіз (жарқылды қосыңыз). Суретті таңдаңыз немесе осында тастаңыз: sf7aat қолтаңбаны тауып, қағазды алып тастайды.
+	Sign a sheet of white paper and take a photo of it in bright, even light (use the flash). Choose the photo or drop it here: PdfCraft finds the signature and removes the paper.	Ақ қағаз парағына қол қойып, оны жарық әрі біркелкі жарықта суретке түсіріңіз (жарқылды қосыңыз). Суретті таңдаңыз немесе осында тастаңыз: PdfCraft қолтаңбаны тауып, қағазды алып тастайды.
 	Choose photo…	Суретті таңдау…
 	No photo chosen	Сурет таңдалмаған
 	Photo	Сурет
@@ -2479,6 +2496,19 @@ animation effects	Off	Өшірулі
 	Make properties default	Қасиеттерді әдепкі ету
 	Pages selected	Таңдалған беттер
 	Page properties	Бет қасиеттері
+	Create & Edit	Жасау және өңдеу
+	Review & Compare	Шолу және салыстыру
+	Forms & Signatures	Пішіндер және қолтаңбалар
+	Protect & Standardize	Қорғау және стандарттау
+	Customize & Automate	Баптау және автоматтандыру
+	No tools match your search.	Іздеуге сәйкес құралдар жоқ.
+	Expand all tools	Барлық құралдарды жаю
+	Collapse all tools	Барлық құралдарды жию
+	Attach a file…	Файл тіркеу…
+	Delete attachment	Тіркемені жою
+	Attaching files is not available on the web yet	Вебте файл тіркеу әзірге қолжетімсіз
+	Attach {name}	{name} тіркеу
+	Delete attachment {key}	{key} тіркемесін жою
 	Font	Қаріп
 	Bulleted list	Таңбалауыш тізім
 	Numbered list	Нөмірленген тізім
@@ -2513,3 +2543,15 @@ animation effects	Off	Өшірулі
 	field names can't contain a period: {name}	өріс атауларында нүкте болмауы керек: {name}
 	two cells would both be named {name}	екі ұяшықтың да атауы {name} болар еді
 	a field named {name} already exists	{name} атты өріс бар
+
+# Date picker: Today button (#4274) (AI-assisted, not separately native-reviewed)
+	Today	Бүгін
+@plural	{n} reply|{n} replies	{n} жауап|{n} жауап
+
+# Pages panel: the Page tools menu (#4415) (AI-assisted, not separately native-reviewed)
+	Page tools	Бет құралдары
+	Insert pages from a file after the selection…	Таңдаудан кейін файлдан беттер кірістіру…
+	Rotate the selected pages counterclockwise	Таңдалған беттерді сағат тіліне қарсы бұру
+	Rotate the selected pages clockwise	Таңдалған беттерді сағат тілімен бұру
+	Extract the selected pages…	Таңдалған беттерді шығарып алу…
+	Delete the selected pages	Таңдалған беттерді жою
