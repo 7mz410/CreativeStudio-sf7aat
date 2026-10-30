@@ -20,13 +20,13 @@ KEEP = ('the PdfCraft authors',)
 
 # Exact replacements, applied before the general rename (and kept idempotent: skipped once done).
 RTL_RULES = [
-    ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.left() > 0.0''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.left() > 0.0'''),
-    ('crates/ui-egui/tests/ui.rs', 'open.right() <= h.get_by_label("Discord").rect().left());', 'open.right() <= h.get_by_label("Keyboard shortcuts").rect().left());'),
-    ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.right() <= discord.left()''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.right() <= discord.left()'''),
-    ('crates/ui-egui/tests/ui.rs', '''    let discord = h.get_by_label("Discord").rect();
+    ('crates/ui-egui/tests/it/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.left() > 0.0''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.left() > 0.0'''),
+    ('crates/ui-egui/tests/it/ui.rs', 'open.right() <= h.get_by_label("Discord").rect().left());', 'open.right() <= h.get_by_label("Keyboard shortcuts").rect().left());'),
+    ('crates/ui-egui/tests/it/ui.rs', '''    let discord = h.get_by_label("Discord").rect();\n    assert!(open.right() <= discord.left()''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();\n    assert!(open.right() <= discord.left()'''),
+    ('crates/ui-egui/tests/it/ui.rs', '''    let discord = h.get_by_label("Discord").rect();
     assert!(open.right() <= discord.left(), "Open {open:?} must not run under Discord {discord:?}");''', '''    let discord = h.get_by_label("Keyboard shortcuts").rect();
     assert!(open.right() <= discord.left(), "Open {open:?} must not run under the top-bar buttons {discord:?}");'''),
-    ('crates/ui-egui/tests/ui_group/links.rs', """fn discord_button_in_the_top_bar_opens_discord() {
+    ('crates/ui-egui/tests/it/links.rs', """fn discord_button_in_the_top_bar_opens_discord() {
     let mut h = harness(|_| {});
     h.get_by_label("Discord").click();
     h.run_steps(2);
@@ -36,9 +36,9 @@ RTL_RULES = [
     assert!(h.query_by_label("Discord").is_none());
     assert!(h.query_by_label("Join our Discord").is_none());
 """),
-    ('crates/ui-egui/tests/ui_group/links.rs', '        ("Join our Discord", links::DISCORD),\n', ''),
-    ('crates/ui-egui/tests/ui_group/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("Creative Studio");'),
-    ('crates/ui-egui/tests/ui_group/links.rs', """    h.get_by_label("Join our Discord").click();
+    ('crates/ui-egui/tests/it/links.rs', '        ("Join our Discord", links::DISCORD),\n', ''),
+    ('crates/ui-egui/tests/it/links.rs', 'h.get_by_label("The upstream ArtCraft community");', 'h.get_by_label("Creative Studio");'),
+    ('crates/ui-egui/tests/it/links.rs', """    h.get_by_label("Join our Discord").click();
     h.run_steps(2);
     assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
 }""", """    h.get_by_label("Creative Studio Website").click();
@@ -59,23 +59,21 @@ RTL_RULES = [
 """, ''),
     ('crates/ui-egui/src/home.rs', 'tl!("The upstream ArtCraft community")', '"Creative Studio"'),
     ('crates/ui-egui/src/home.rs', '                            ui.label(egui::RichText::new(tl!("Get help, share feedback and follow development on Discord.")).color(t.text_muted));\n', ''),
-    ('crates/ui-egui/tests/ui_group/links.rs', '("Creative Studio Website", "https://getartcraft.com/apps/pdfcraft")', '("Creative Studio Website", "https://studio.creative.ps")'),
-    ('crates/ui-egui/tests/ui_group/links.rs', '("sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("sf7aat on GitHub", "https://github.com/7mz410/CreativeStudio-sf7aat")'),
-    ('crates/ui-egui/tests/ui_group/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://studio.creative.ps")'),
+    ('crates/ui-egui/tests/it/links.rs', '("Creative Studio Website", "https://getartcraft.com/apps/pdfcraft")', '("Creative Studio Website", "https://studio.creative.ps")'),
+    ('crates/ui-egui/tests/it/links.rs', '("sf7aat on GitHub", "https://github.com/storytold/pdfcraft")', '("sf7aat on GitHub", "https://github.com/7mz410/CreativeStudio-sf7aat")'),
+    ('crates/ui-egui/tests/it/links.rs', '("ArtCraft website", "https://getartcraft.com")', '("ArtCraft website", "https://studio.creative.ps")'),
     ('crates/engine/src/links.rs', '        assert_eq!(super::APP_PAGE, format!("{}/apps/{}", super::WEBSITE, super::APP));\n        assert_eq!(super::GITHUB, format!("https://github.com/storytold/{}", super::APP));', '        assert_eq!(super::APP_PAGE, "https://studio.creative.ps");\n        assert_eq!(super::GITHUB, "https://github.com/7mz410/CreativeStudio-sf7aat");'),
     # Links, the update check and upstream's ArtCraft wordmark/mark (docs/brand/, removed).
     ('crates/engine/src/links.rs', 'pub const WEBSITE: &str = "https://getartcraft.com";', 'pub const WEBSITE: &str = "https://studio.creative.ps";'),
     ('crates/engine/src/links.rs', 'pub const APP_PAGE: &str = "https://getartcraft.com/apps/pdfcraft";', 'pub const APP_PAGE: &str = "https://studio.creative.ps";'),
     ('crates/engine/src/links.rs', 'pub const GITHUB: &str = "https://github.com/storytold/pdfcraft";', 'pub const GITHUB: &str = "https://github.com/7mz410/CreativeStudio-sf7aat";'),
-    ('crates/ui-egui/src/updates.rs', 'pub const RELEASES_PAGE: &str = "https://github.com/storytold/pdfcraft/releases";', 'pub const RELEASES_PAGE: &str = "https://github.com/7mz410/CreativeStudio-sf7aat/releases";'),
-    ('apps/pdfcraft/src/updates.rs', 'const LATEST: &str = "https://api.github.com/repos/storytold/pdfcraft/releases/latest";', 'const LATEST: &str = "https://api.github.com/repos/7mz410/CreativeStudio-sf7aat/releases/latest";'),
+    ('crates/ui-egui/src/platform/updates.rs', 'pub const RELEASES_PAGE: &str = "https://github.com/storytold/pdfcraft/releases";', 'pub const RELEASES_PAGE: &str = "https://github.com/7mz410/CreativeStudio-sf7aat/releases";'),
     ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo-white.svg")', 'include_bytes!("../../../docs/studio/sf7aat-white.svg")'),
     ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-logo.svg")', 'include_bytes!("../../../docs/studio/sf7aat.svg")'),
     ('crates/ui-egui/src/widgets.rs', 'include_bytes!("../../../docs/brand/artcraft-mark.svg")', 'include_bytes!("../../../docs/studio/sf7aat-icon.svg")'),
     # Upstream's Arabic display-order test: our Arabic name (studio/arabic_names.py) replaces the Latin one.
-    ('crates/ui-egui/src/i18n/mod.rs', 'assert_eq!(tr(ar, "About sf7aat"), "sf7aat حول");', 'assert_eq!(tr(ar, "About sf7aat"), "صفحات حول");'),
     # No Discord button in the title bar (upstream's macOS title-bar band test, new in the 2026-10-12 merge).
-    ('crates/ui-egui/tests/ui.rs', '["Home", "band.pdf", "Open", "Discord", "Keyboard shortcuts"]', '["Home", "band.pdf", "Open", "Keyboard shortcuts"]'),
+    ('crates/ui-egui/tests/it/ui.rs', '["Home", "band.pdf", "Open", "Discord", "Keyboard shortcuts"]', '["Home", "band.pdf", "Open", "Keyboard shortcuts"]'),
 ]
 
 SPECIFIC = {
