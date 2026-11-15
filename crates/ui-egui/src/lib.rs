@@ -15,6 +15,8 @@
 pub const UPDATE_APP: craft_update::app::App = craft_update::app::App {
     icon_png: Some(include_bytes!("../../../assets/app-icon/hicolor/128x128/apps/ai.storyteller.pdfcraft.png")),
     accent: Some([0xb7, 0x02, 0x28]),
+    name: "sf7aat",
+    repo: "7mz410/CreativeStudio-sf7aat",
     ..craft_update::suite::PDFCRAFT
 };
 

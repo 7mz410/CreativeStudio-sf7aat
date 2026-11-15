@@ -7,7 +7,7 @@ use std::{io, path::Path};
 
 const OPEN_WITH: &str = "com.apple.LaunchServices.OpenWith";
 const QUARANTINE: &str = "com.apple.quarantine";
-const BUNDLE_ID: &str = "ai.storyteller.pdfcraft";
+const BUNDLE_ID: &str = "ps.creative.studio.sf7aat";
 const MAX_ATTRIBUTE: usize = 64 * 1024;
 
 /// A bounded snapshot used only to decide whether native association recovery is eligible.
@@ -350,7 +350,7 @@ mod tests {
     fn native_binding_and_packaging_identity_match() {
         // Captured via Apple's API on a synthetic PDF on macOS 27.0.1. Contains only the
         // public installed bundle path, identifier and schema version; no document data.
-        let hex = "62706c6973743030d30102030405065776657273696f6e54706174685f101062756e646c656964656e74696669657210005f101a2f4170706c69636174696f6e732f50646643726166742e6170705f101761692e73746f727974656c6c65722e7064666372616674080f171c2f314e0000000000000101000000000000000700000000000000000000000000000068";
+        let hex = "62706c6973743030d30102030405065f101062756e646c656964656e74696669657254706174685776657273696f6e5f101970732e63726561746976652e73747564696f2e7366376161745f10182f4170706c69636174696f6e732f7366376161742e6170701000080f22272f4b660000000000000101000000000000000700000000000000000000000000000068";
         let captured: Vec<u8> =
             hex.as_bytes().as_chunks::<2>().0.iter().map(|pair| u8::from_str_radix(std::str::from_utf8(pair).unwrap(), 16).unwrap()).collect();
         assert!(points_to_this_app(&captured, Path::new("/Applications/sf7aat.app")));

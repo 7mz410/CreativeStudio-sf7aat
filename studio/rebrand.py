@@ -16,7 +16,7 @@ NAME = 'sf7aat'
 REPO = 'https://github.com/7mz410/CreativeStudio-sf7aat'
 SITE = 'https://studio.creative.ps'
 # Persisted names that saved catalogs and presets refer to; renaming them would break those.
-KEEP = ('the PdfCraft authors',)
+KEEP = ('the PdfCraft authors', 'PdfCraft patch: from Windows 11')
 
 # Exact replacements, applied before the general rename (and kept idempotent: skipped once done).
 RTL_RULES = [
@@ -81,6 +81,11 @@ RTL_RULES = [
     # Upstream's Arabic display-order test: our Arabic name (studio/arabic_names.py) replaces the Latin one.
     # No Discord button in the title bar (upstream's macOS title-bar band test, new in the 2026-10-12 merge).
     ('crates/ui-egui/tests/it/ui.rs', '["Home", "band.pdf", "Open", "Discord", "Keyboard shortcuts"]', '["Home", "band.pdf", "Open", "Keyboard shortcuts"]'),
+    # Update check dialog brand name
+    ('crates/ui-egui/src/lib.rs', '..craft_update::suite::PDFCRAFT', 'name: "sf7aat",\n    repo: "7mz410/CreativeStudio-sf7aat",\n    ..craft_update::suite::PDFCRAFT'),
+    # macOS bundle association recovery identity
+    ('crates/ui-egui/src/platform/macos_association.rs', 'const BUNDLE_ID: &str = "ai.storyteller.pdfcraft";', 'const BUNDLE_ID: &str = "ps.creative.studio.sf7aat";'),
+    ('crates/ui-egui/src/platform/macos_association.rs', '62706c6973743030d30102030405065776657273696f6e54706174685f101062756e646c656964656e74696669657210005f101a2f4170706c69636174696f6e732f50646643726166742e6170705f101761692e73746f727974656c6c65722e7064666372616674080f171c2f314e0000000000000101000000000000000700000000000000000000000000000068', '62706c6973743030d30102030405065f101062756e646c656964656e74696669657254706174685776657273696f6e5f101970732e63726561746976652e73747564696f2e7366376161745f10182f4170706c69636174696f6e732f7366376161742e6170701000080f22272f4b660000000000000101000000000000000700000000000000000000000000000068'),
 ]
 
 SPECIFIC = {
@@ -204,6 +209,13 @@ def main():
         if out != src:
             path.write_text(out, encoding='utf-8')
             changed.append(path)
+    attrib = ROOT / 'ATTRIBUTION.toml'
+    if attrib.exists():
+        src = attrib.read_text(encoding='utf-8')
+        out = re.sub(r'\[\[fetched\]\]\s+file = "text-(?:detection|recognition)\.rten"[\s\S]*?(?=\n\n\[\[|\Z)', '', src)
+        if out != src:
+            attrib.write_text(out, encoding='utf-8')
+            changed.append(attrib)
     for p in changed:
         print('rebranded', p.relative_to(ROOT))
 
